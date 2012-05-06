@@ -2,10 +2,13 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+import re
+
 from twisted.internet import reactor, protocol
 from twisted.words.protocols import irc
 
 import config
+import fml
 
 class Bot(irc.IRCClient):
     def __init__(self, name, channels):
@@ -21,6 +24,10 @@ class Bot(irc.IRCClient):
     def joined(self, channel):
         print("Joined channel " + channel)
         self.say(channel, b"hello world")
+
+    def privmsg(self, user, channel, message):
+        if re.match('.fml', message) is not None:
+            self.say(channel, fml.fml())
 
 class BotFactory(protocol.ClientFactory):
     def __init__(self, name, channels):
