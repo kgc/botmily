@@ -4,17 +4,16 @@ from __future__ import unicode_literals
 
 import re
 
-from twisted.internet import reactor, protocol
 from twisted.words.protocols import irc
 
-import config
-import fml
+from botmily import config
+from plugins import fml
 
 class Bot(irc.IRCClient):
-    def __init__(self, name, channels):
-        self.nickname = name
+    def __init__(self):
+        self.nickname = config.name
         self.realname = b"Botmily https://github.com/kgc/botmily"
-        self.channels = channels
+        self.channels = config.channels
 
     def signedOn(self):
         print("Signed on to the IRC server")
@@ -31,20 +30,3 @@ class Bot(irc.IRCClient):
             self.say(channel, b"same")
         if re.search('blippy', message) is not None:
             self.say(channel, b"blippy owns")
-
-class BotFactory(protocol.ClientFactory):
-    def __init__(self, name, channels):
-        self.name = name
-        self.channels = channels
-
-    def buildProtocol(self, addr):
-        p = Bot(self.name, self.channels)
-        p.factory = self
-        return p
-
-if __name__ == '__main__':
-    print("Starting the bot")
-    name, server, channels = config.getConfig()
-    f = BotFactory(name, channels.split(" "))
-    reactor.connectTCP(server, 6667, f)
-    reactor.run()
