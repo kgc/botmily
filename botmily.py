@@ -23,11 +23,14 @@ class Bot(irc.IRCClient):
 
     def joined(self, channel):
         print("Joined channel " + channel)
-        self.say(channel, b"hello world")
 
     def privmsg(self, user, channel, message):
         if re.match('.fml', message) is not None:
             self.say(channel, fml.fml())
+        if re.search('im gay', message) is not None:
+            self.say(channel, b"same")
+        if re.search('blippy', message) is not None:
+            self.say(channel, b"blippy owns")
 
 class BotFactory(protocol.ClientFactory):
     def __init__(self, name, channels):
