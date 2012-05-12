@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 import re
 
-def hook(message):
+def hook(nick, message):
     if re.search('im gay', message) is None:
         return None
     return 'same'

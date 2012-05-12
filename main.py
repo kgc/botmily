@@ -6,6 +6,7 @@ from twisted.internet import protocol, reactor
 
 from botmily import bot
 from botmily import config
+from botmily import db
 
 class BotFactory(protocol.ClientFactory):
     def __init__(self):
@@ -20,6 +21,7 @@ class BotFactory(protocol.ClientFactory):
 if __name__ == '__main__':
     print("Starting the bot")
     config.getConfig()
+    db.connect()
     f = BotFactory()
     print("Connecting...")
     reactor.connectTCP(config.server, 6667, f)

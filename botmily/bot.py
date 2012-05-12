@@ -33,6 +33,6 @@ class Bot(irc.IRCClient):
 
     def privmsg(self, user, channel, message):
         for function in self.hooks:
-            output = function(message)
+            output = function(user, message)
             if output is not None:
                 self.say(channel, str(output))

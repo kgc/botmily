@@ -8,7 +8,7 @@ from xml.etree import ElementTree
 
 from BeautifulSoup import BeautifulSoup
 
-def hook(message):
+def hook(nick, message):
     if re.match('.fml', message) is None:
         return None
     response = urlopen('http://m.fmylife.com/random')
