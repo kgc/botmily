@@ -19,7 +19,7 @@ def hook(nick, message):
     if len(message) < 6:
         row = db.execute("select loc from weather where nick=:nick", {"nick": nick}).fetchone()
         if not row:
-            return 'Type in a location ¬_¬'.encode('latin-1')
+            return 'Type in a location ¬_¬'
         loc = row[0]
     else:
         db.execute("insert or replace into weather(nick, loc) values (:nick, :loc)", {"nick": nick, "loc": loc})

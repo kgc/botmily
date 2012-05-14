@@ -35,4 +35,4 @@ class Bot(irc.IRCClient):
         for function in self.hooks:
             output = function(user, message)
             if output is not None:
-                self.say(channel, str(output))
+                self.say(channel, output.encode("utf-8"))
