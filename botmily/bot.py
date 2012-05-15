@@ -10,6 +10,11 @@ from twisted.words.protocols import irc
 from botmily import config
 import plugins
 
+def splituser(user):
+    nick, remainder = user.split('!', 1)
+    ident, host = remainder.split('@', 1)
+    return nick, ident, host
+
 class Bot(irc.IRCClient):
     def __init__(self):
         self.nickname = config.name
@@ -32,8 +37,9 @@ class Bot(irc.IRCClient):
         print("Joined channel " + channel)
 
     def privmsg(self, user, channel, message):
+        nick, ident, host = splituser(user)
         for function in self.hooks:
-            output = function(user, message)
+            output = function(nick, ident, host, message)
             if output is not None:
                 self.say(channel, output.encode("utf-8"))
 
