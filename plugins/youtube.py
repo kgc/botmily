@@ -10,7 +10,7 @@ from gdata.youtube import service
 
 regex = r'(?:http://www.youtube.com/watch\?v=)([-_a-z0-9]+)'
 
-def hook(nick, message):
+def hook(nick, ident, host, message):
     video_uri = re.search(regex, message, re.I)
     if video_uri is None:
         return None
