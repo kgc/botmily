@@ -36,3 +36,7 @@ class Bot(irc.IRCClient):
             output = function(user, message)
             if output is not None:
                 self.say(channel, output.encode("utf-8"))
+
+    def lineReceived(self, line):
+        print(line)
+        irc.IRCClient.lineReceived(self, line)
