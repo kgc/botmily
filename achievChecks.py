@@ -50,12 +50,12 @@ def checkKateV(nick , host , message):
         hc = getAchiev(KV_HC_SB,host)       
         if s >= 1 and t >= 1 and hc >= 1:
             incrementAchiev(KV_COMPLETE , host)
-            return '~Congratulations , %s you unlocked the KateV achievment! You should check your privledge' %nick
+            return '~Congratulations , %s you unlocked the KateV achievment! You should check your privledge~' %nick
     return None
 
 def checkImATranny(nick,host,message):
     if re.match('im a tranny' , message):
         result = incrementAchiev(1,host)
-        if getAchiev(IMA_TRANNY) == 2:
+        if getAchiev(IMA_TRANNY , host) == 2:
             return '~Congratulations , %s you unlocked the tranny achievment!!~' %nick
     return None
