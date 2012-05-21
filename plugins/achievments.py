@@ -7,7 +7,7 @@ from botmily.db import db
 import achievChecks
 
 def checkAchievs(nick , host , message):
-    results = None
+    results = ''
     for x in dir(achievChecks):
         if x.find('check') != -1:
             result = getattr(achievChecks,x)(nick,host,message)
@@ -16,7 +16,7 @@ def checkAchievs(nick , host , message):
                     results = result
                 else:
                     results = results + ' , ' + result
-    if results:
+    if len(results) > 0:
         blurb = '~Congratulations %s you unlocked ' %nick
         return blurb + results + '~'
     else:
