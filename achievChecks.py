@@ -77,7 +77,7 @@ def checkSame(nick,host,message):
     return None
 
 def checkTheodora(nick,host,message):
-        if getAchiev(SAME , host) == 15 && getAchiev(IM_GAY,host) == 15:
+    if getAchiev(SAME , host) == 15 and getAchiev(IM_GAY,host) == 15:
             return 'Literally Theodora IRL'
     return None
 
@@ -173,8 +173,8 @@ def checkFML(nick,host,message):
 LINK = 18
 def checkFML(nick,host,message):
     incrementAchiev(LINK,host)
-        if getAchiev(LINK,host) == 1000:
-            return "A Thousand Lines Of Bullshit, Hope You Are Happy!" 
+    if getAchiev(LINK,host) == 1000:
+        return "A Thousand Lines Of Bullshit, Hope You Are Happy!" 
 
 CREEP_COMPLETE = 19
 CREEP_CREEP = 20
