@@ -100,7 +100,7 @@ BLIP_CUTE = 10
 BLIP_HOT = 11
 BLIP_SHORT = 12
 def checkBlippy(nick , host , message):
-    if getAchiev(BLIP_COMPLETE,host) != 1:
+    if getAchiev(BLIP_COMPLETE,host) < 1:
         if re.search('cute' , message):
             incrementAchiev(BLIP_CUTE,host)
         if re.search('hot', message):
@@ -132,7 +132,7 @@ LOLIDK_COMPLETE =15
 LOLIDK_IDK = 16
 LOLIDK_LOL = 17
 def checkLOLIDK(nick , host , message):
-    if getAchiev(LOLIDK_COMPLETE,host) != 1:
+    if getAchiev(LOLIDK_COMPLETE,host)  < 1:
         if re.search('idk' , message):
             incrementAchiev(LOLIDK_IDK,host)
         if re.search('lol', message):
@@ -140,7 +140,7 @@ def checkLOLIDK(nick , host , message):
         t = getAchiev(LOLIDK_LOL,host)
         hc = getAchiev(LOLIDK_IDK,host)       
         if hc >= 4 and t >= 4:
-            incrementAchiev(BLIP_COMPLETE , host)
+            incrementAchiev(LOLIDK_COMPLETE , host)
             return 'Ignorant But Laughing About It'
     return None
 
@@ -182,7 +182,7 @@ CREEP_WIERDO = 21
 CREEP_HELL = 22
 CREEP_BELONG = 23
 def checkCreep(nick,host,message):
-    if getAchiev(CREEP_COMPLETE,host) != 1:
+    if getAchiev(CREEP_COMPLETE,host) < 1:
         if re.search('im a creep' , message):
             incrementAchiev(CREEP_CREEP,host)
         if re.search('im a wierdo', message):
