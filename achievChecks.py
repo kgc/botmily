@@ -187,8 +187,8 @@ def checkSame(nick,host,message):
 
 def checkTheodora(nick,host,message):
     if getAchiev(SAME , host) > 15 and getAchiev(IM_GAY,host) > 15:
-        if getAchiev(DORA_COMPLETE,host) < 1:       
-            incrementAchiev(DORA_COMPLETE , host)
+        if getAchiev(DORA,host) < 1:       
+            incrementAchiev(DORA , host)
             return DORA_STRING
     return None
 
