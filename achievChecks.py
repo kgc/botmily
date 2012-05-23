@@ -32,7 +32,7 @@ def incrementAchiev(achievId , host):
         return result[0][2] + 1
     elif len(result) > 1:
         print 'porblem'
-        return 0
+        return 1
     elif len(result) == 0:
         db.execute("insert into achiv(aid, host , value) values(%i, '%s' , 1)" %(achievId,host))
         return 1
