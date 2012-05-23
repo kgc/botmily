@@ -2,9 +2,9 @@ from __future__ import division
 from __future__ import unicode_literals
 
 import re
-
+from botmily import config
 from botmily.db import db
-import achievChecks
+import achievChecks , tumble
 
 def checkAchievs(nick , host , message):
     results = ''
@@ -18,12 +18,25 @@ def checkAchievs(nick , host , message):
                     results = results + ' , ' + result
     if len(results) > 0:
         blurb = '~Congratulations %s you unlocked ' %nick
-        return blurb + results + '~'
+        if config.tumblr_tumbling:
+            dontcare , url , atall = tumble.getLastPost('fuckyeahcutetranschicks')
+            caption = '%s unlocked the following achievements : ' %nick + results
+            tumbleUrl = tumble.makePost(config.tumblr_user,config.tumblr_password,config.tumblr_blog,config.tumblr_title,url,caption,caption)
+            return blurb + results + ' - View your amazing achievements here http://%s' %tumbleUrl
+        else:
+            return blurb + results
     else:
         return None
 
 def hook(nick, ident, host, message):
     db.execute("create table if not exists achiv(aid integer , host text , value integer)")
-    result = checkAchievs(nick , host, message)
-    db.commit()
-    return result
+    if re.match('.achievements',message):
+        result = achievChecks.listAchievs(host)
+        if result == '':
+            return 'You have no achievements %s , you loser' %nick
+        else:
+            return 'You have the following achievements : %s' %result
+    else:                
+        result = checkAchievs(nick , host, message)
+        db.commit()
+        return result
