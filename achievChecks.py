@@ -39,11 +39,11 @@ def incrementAchiev(achievId , host):
 
 def checkKateV(nick , host , message):
     if getAchiev(KV_COMPLETE,host) != 1:
-        if re.search('shemale' , message , re.IGNORECASE):
+        if re.search('shemale' , message):
             incrementAchiev(KV_SHMLE,host)
-        if re.search('tranny', message , re.IGNORECASE):
+        if re.search('tranny', message):
             incrementAchiev(KV_TRNY,host)
-        if re.search('hard cocks on soft bodies', message , re.IGNORECASE):
+        if re.search('hard cocks on soft bodies', message):
             incrementAchiev(KV_HC_SB,host)
         s = getAchiev(KV_SHMLE,host)
         t = getAchiev(KV_TRNY,host)
@@ -54,7 +54,7 @@ def checkKateV(nick , host , message):
     return None
 
 def checkImATranny(nick,host,message):
-    if re.search('im a tranny' , message , re.IGNORECASE):
+    if re.search('im a tranny' , message):
         result = incrementAchiev(IMA_TRANNY,host)
         if getAchiev(IMA_TRANNY , host) == 2:
             return 'Transthusiast' 
@@ -62,7 +62,7 @@ def checkImATranny(nick,host,message):
 
 IM_GAY = 6
 def checkImGay(nick,host,message):
-    if re.search('im gay' , message , re.IGNORECASE):
+    if re.search('im gay' , message):
         result = incrementAchiev(IM_GAY,host)
         if getAchiev(IM_GAY , host) == 20:
             return 'You Are Indeed Gay!'
@@ -70,7 +70,7 @@ def checkImGay(nick,host,message):
 
 SAME = 7
 def checkSame(nick,host,message):
-    if re.search('same' , message , re.IGNORECASE):
+    if re.search('same' , message):
         result = incrementAchiev(SAME,host)
         if getAchiev(SAME , host) == 10:
             return "Everybody's The Same!"
@@ -83,14 +83,14 @@ def checkTheodora(nick,host,message):
 
 IRL = 8
 def checkIrl(nick,host,message):
-    if re.search('irl' , message , re.IGNORECASE):
+    if re.search('irl' , message):
         result = incrementAchiev(IRL,host)
         if getAchiev(IRL , host) == 10:
             return "Reality Check"
     return None
 
 def checkButts(nick,host,message):
-    if re.search('butt',message , re.IGNORECASE):
+    if re.search('butt',message):
         result = incrementAchiev(BUTT,host)
         if getAchiev(BUTT,host) == 10:
             return "The Posterior Is Superior!" 
@@ -100,12 +100,12 @@ BLIP_CUTE = 10
 BLIP_HOT = 11
 BLIP_SHORT = 12
 def checkBlippy(nick , host , message):
-    if getAchiev(BLIP_COMPLETE,host) != 1:
-        if re.search('cute' , message , re.IGNORECASE):
+    if getAchiev(BLIP_COMPLETE,host) < 1:
+        if re.search('cute' , message):
             incrementAchiev(BLIP_CUTE,host)
-        if re.search('hot', message , re.IGNORECASE):
+        if re.search('hot', message):
             incrementAchiev(BLIP_HOT,host)
-        if re.search('short', message , re.IGNORECASE) or re.search('shortest',message , re.IGNORECASE):
+        if re.search('short', message) or re.search('shortest',message):
             incrementAchiev(BLIP_SHORT,host)
         s = getAchiev(BLIP_CUTE,host)
         t = getAchiev(BLIP_HOT,host)
@@ -117,13 +117,13 @@ def checkBlippy(nick , host , message):
 
 GIRL = 13
 def checkGirl(nick,host,message):
-    if re.search('girl',message , re.IGNORECASE):
+    if re.search('girl',message):
         result = incrementAchiev(GIRL,host)
         if getAchiev(GIRL,host) == 20:
             return "I'm Not A Girl, Not Yet A Woman" 
 DICK = 14
 def checkDick(nick,host,message):
-    if re.search('dick',message , re.IGNORECASE):
+    if re.search('dick',message):
         result = incrementAchiev(DICK,host)
         if getAchiev(DICK,host) == 10:
             return "KEEP SAYING DICK" 
@@ -132,49 +132,48 @@ LOLIDK_COMPLETE =15
 LOLIDK_IDK = 16
 LOLIDK_LOL = 17
 def checkLOLIDK(nick , host , message):
-    if getAchiev(LOLIDK_COMPLETE,host) != 1:
-        if re.search('idk' , message , re.IGNORECASE):
+    if getAchiev(LOLIDK_COMPLETE,host)  < 1:
+        if re.search('idk' , message):
             incrementAchiev(LOLIDK_IDK,host)
-        if re.search('lol', message , re.IGNORECASE):
+        if re.search('lol', message):
             incrementAchiev(LOLIDK_LOL,host)
         t = getAchiev(LOLIDK_LOL,host)
         hc = getAchiev(LOLIDK_IDK,host)       
         if hc >= 4 and t >= 4:
-            incrementAchiev(BLIP_COMPLETE , host)
+            incrementAchiev(LOLIDK_COMPLETE , host)
             return 'Ignorant But Laughing About It'
     return None
 
 CRUELTY = 14
 def checkCruelty(nick,host,message):
-    if re.search('lol @',message , re.IGNORECASE):
+    if re.search('lol @',message):
         result = incrementAchiev(CRUELTY,host)
         if getAchiev(CRUELTY,host) == 5:
             return "Stop Fucking Laughing At People You Asshole!" 
 
 SAMANTHA = 15
 def checkSamantha(nick,host,message):
-    if re.search('samantha',message , re.IGNORECASE):
+    if re.search('samantha',message):
         result = incrementAchiev(SAMANTHA,host)
         if getAchiev(SAMANTHA,host) == 5:
             return "Say My Name Bitch" 
 
 FML = 16         
 def checkFML(nick,host,message):
-    if re.search('.fml',message , re.IGNORECASE):
+    if re.search('.fml',message):
         result = incrementAchiev(FML,host)
         if getAchiev(FML,host) == 8:
             return "NO FUCK YOUR LIFE ASSHOLE" 
 FART = 17        
 def checkFML(nick,host,message):
-    if re.search('fart',message , re.IGNORECASE):
+    if re.search('fart',message):
         result = incrementAchiev(FART,host)
         if getAchiev(FART,host) == 5:
             return "Farts Are Always Funny" 
-
-CHATTY = 18
+LINK = 18
 def checkFML(nick,host,message):
-    incrementAchiev(CHATTY,host)
-    if getAchiev(CHATTY,host) == 1000:
+    incrementAchiev(LINK,host)
+    if getAchiev(LINK,host) == 1000:
         return "A Thousand Lines Of Bullshit, Hope You Are Happy!" 
 
 CREEP_COMPLETE = 19
@@ -183,14 +182,14 @@ CREEP_WIERDO = 21
 CREEP_HELL = 22
 CREEP_BELONG = 23
 def checkCreep(nick,host,message):
-    if getAchiev(CREEP_COMPLETE,host) != 1:
-        if re.search('im a creep' , message , re.IGNORECASE):
+    if getAchiev(CREEP_COMPLETE,host) < 1:
+        if re.search('im a creep' , message):
             incrementAchiev(CREEP_CREEP,host)
-        if re.search('im a wierdo', message , re.IGNORECASE):
+        if re.search('im a wierdo', message):
             incrementAchiev(CREEP_WIERDO,host)
-        if re.search('what the hell am i doing here', message , re.IGNORECASE):
+        if re.search('what the hell am i doing here', message):
             incrementAchiev(CREEP_HELL,host)
-        if re.search('i dont belong here', message , re.IGNORECASE):
+        if re.search('i dont belong here', message):
             incrementAchiev(CREEP_BELONG,host)
         c = getAchiev(CREEP_CREEP,host)
         w = getAchiev(CREEP_WIERDO,host)    
@@ -200,33 +199,3 @@ def checkCreep(nick,host,message):
             incrementAchiev(CREEP_COMPLETE , host)
             return 'RADIOHEAD IS THE BEST BAND IN THE WORLD PROBABLY!!!'
     return None
-
-LINK = 24       
-def checkLink(nick,host,message):
-    if re.search('http://',message , re.IGNORECASE):
-        result = incrementAchiev(LINK,host)
-        if getAchiev(LINK,host) == 15:
-            return "I Hope All Those Links Are Funny!" 
-
-MAYHEM_COMPLETE = 25
-MAYHEM_ROCKS = 26
-MAYHEM_LIFTING = 27
-def checkMayhem(nick , host , message):
-    if getAchiev(MAYHEM_COMPLETE,host) < 1:
-        if re.search('rocks' , message , re.IGNORECASE):
-            incrementAchiev(MAYHEM_ROCKS,host)
-        if re.search('lifting', message , re.IGNORECASE):
-            incrementAchiev(MAYHEM_LIFTING,host)
-        t = getAchiev(MAYHEM_ROCKS,host)
-        hc = getAchiev(MAYHEM_LIFTING,host)       
-        if hc >= 2 and t >= 2:
-            incrementAchiev(MAYHEM_COMPLETE , host)
-            return 'LIFT ROCKS EVRRDAY -- Mayhem 2012'
-    return None
-
-TMT = 28  
-def checkTMT(nick,host,message):
-    if re.search('threadid=3447636',message , re.IGNORECASE):
-        result = incrementAchiev(TMT,host)
-        if getAchiev(TMT,host) == 5:
-            return "Stop Reading That Fucking Thread" 
