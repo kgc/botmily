@@ -38,7 +38,7 @@ def incrementAchiev(achievId , host):
         return 1
 
 def checkKateV(nick , host , message):
-    if getAchiev(KV_COMPLETE,host) != 1:
+    if getAchiev(KV_COMPLETE,host) < 1:
         if re.search('shemale' , message):
             incrementAchiev(KV_SHMLE,host)
         if re.search('tranny', message):
@@ -170,10 +170,10 @@ def checkFML(nick,host,message):
         result = incrementAchiev(FART,host)
         if getAchiev(FART,host) == 5:
             return "Farts Are Always Funny" 
-LINK = 18
+LINES = 18
 def checkFML(nick,host,message):
-    incrementAchiev(LINK,host)
-    if getAchiev(LINK,host) == 1000:
+    incrementAchiev(LINES,host)
+    if getAchiev(LINES,host) == 1000:
         return "A Thousand Lines Of Bullshit, Hope You Are Happy!" 
 
 CREEP_COMPLETE = 19
@@ -199,3 +199,33 @@ def checkCreep(nick,host,message):
             incrementAchiev(CREEP_COMPLETE , host)
             return 'RADIOHEAD IS THE BEST BAND IN THE WORLD PROBABLY!!!'
     return None
+
+LINK = 24       
+def checkLink(nick,host,message):
+    if re.search('http://',message , re.IGNORECASE):
+        result = incrementAchiev(LINK,host)
+        if getAchiev(LINK,host) == 15:
+            return "I Hope All Those Links Are Funny!" 
+
+MAYHEM_COMPLETE = 25
+MAYHEM_ROCKS = 26
+MAYHEM_LIFTING = 27
+def checkMayhem(nick , host , message):
+    if getAchiev(MAYHEM_COMPLETE,host) < 1:
+        if re.search('rocks' , message , re.IGNORECASE):
+            incrementAchiev(MAYHEM_ROCKS,host)
+        if re.search('lifting', message , re.IGNORECASE):
+            incrementAchiev(MAYHEM_LIFTING,host)
+        t = getAchiev(MAYHEM_ROCKS,host)
+        hc = getAchiev(MAYHEM_LIFTING,host)       
+        if hc >= 2 and t >= 2:
+            incrementAchiev(MAYHEM_COMPLETE , host)
+            return 'LIFT ROCKS EVRRDAY -- Mayhem 2012'
+    return None
+
+TMT = 28  
+def checkTMT(nick,host,message):
+    if re.search('threadid=3447636',message , re.IGNORECASE):
+        result = incrementAchiev(TMT,host)
+        if getAchiev(TMT,host) == 5:
+            return "Stop Reading That Fucking Thread" 
