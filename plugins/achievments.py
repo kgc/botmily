@@ -20,8 +20,9 @@ def checkAchievs(nick , host , message):
         blurb = '~Congratulations %s you unlocked ' %nick
         if config.tumblr_tumbling:
             dontcare , url , atall = tumble.getLastPost('fuckyeahcutetranschicks')
-            caption = '%s unlocked the following achievements : ' %nick + results
-            tumbleUrl = tumble.makePost(config.tumblr_user,config.tumblr_password,config.tumblr_blog,config.tumblr_title,url,caption,caption)
+            caption = results
+            t_caption = '%s unlocked the following achievements : ' %nick + results
+            tumbleUrl = tumble.makePost(config.tumblr_user,config.tumblr_password,config.tumblr_blog,config.tumblr_title,url,caption,t_caption)
             return blurb + results + ' - View your amazing achievements here http://%s' %tumbleUrl
         else:
             return blurb + results
