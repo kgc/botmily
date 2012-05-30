@@ -54,3 +54,40 @@ def makeMacro(imgUrl , text ,fileName):
     drawtext(draw, text, font, "white", bbox)
     image.save(fileName , 'JPEG')
 
+def drawAchieve(text):
+    img = Image.open('achieve.png')
+    draw = ImageDraw.Draw(img)
+    shadowcolor = "black"
+    x0 = 218 + 10
+    y0= 128 
+    y1 = 173 
+    x1 = 884
+    font = ImageFont.truetype("arial.ttf", 45)
+    space = draw.textsize(" ", font)[0]
+    words = text.split()
+    x = x0; y = y0; h = 0
+    for word in words:
+        # check size of this word
+        w, h = draw.textsize(word, font)
+        # figure out where to draw it
+        if x > x0:
+            x += space
+            if x + w > x1:
+                # new line
+                x = x0
+                y += h
+        #text
+        draw.text((x,y), word, font=font, fill='white')        
+        x += w
+    return img
+    
+def overlayAchieve(text,url):
+    target = getImageFromUrl(url)
+    y = drawAchieve(text)
+    basewidth = target.size[0]
+    wpercent = basewidth/float(y.size[0])
+    hsize = int((float(y.size[1])*float(wpercent)))
+    y = y.resize((basewidth,hsize),Image.ANTIALIAS)
+    target.paste(y ,(0,0) , y)
+    target.save('achieved.png','PNG' )
+    return 'achieved.png'

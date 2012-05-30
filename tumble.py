@@ -2,7 +2,7 @@ import tumblr
 import urllib2 , urllib
 from PIL import Image
 from cStringIO import StringIO
-from makeMacro import makeMacro
+from makeMacro import overlayAchieve
 import pycurl
 def postToImgur(filename):    
     store = StringIO()
@@ -23,10 +23,9 @@ def postToImgur(filename):
     return urlneeded
 
 def makePost(user,password,blog,title,imgUrl,caption,tumblrCaption):
-    makeMacro(imgUrl,caption,'woot.jpg')
-    image = open('./woot.jpg')
+    filename = overlayAchieve(caption,imgUrl)
     url = 'http://www.tumblr.com/api/write'
-    imageurl = postToImgur('./woot.jpg')
+    imageurl = postToImgur('./%s'%filename)
     vals = {
                 'email': user,
                 'password': password,
