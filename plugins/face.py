@@ -26,22 +26,25 @@ def hook(nick, ident, host, message):
         httpcnx.request('GET' , url )
         response = httpcnx.getresponse()           
         x = json.loads(response.read())
-        if x['photos'][0].has_key('tags'):
-            if x['photos'][0]['tags'][0]['attributes'].has_key('mood') and x['photos'][0]['tags'][0]['attributes'].has_key('gender') :            
-                genderVal =  x['photos'][0]['tags'][0]['attributes']['gender']['value']
-                moodVal = x['photos'][0]['tags'][0]['attributes']['mood']['value']
-                moodConfidence = x['photos'][0]['tags'][0]['attributes']['mood']['confidence']
-                genderConfidence =  x['photos'][0]['tags'][0]['attributes']['gender']['confidence']
-                return 'Person is %s  with %s%% confidence, current mood %s with %s%% confidence ' %(genderVal , genderConfidence , moodVal , moodConfidence)
+        try:
+            if x['photos'][0].has_key('tags'):
+                if x['photos'][0]['tags'][0]['attributes'].has_key('mood') and x['photos'][0]['tags'][0]['attributes'].has_key('gender') :            
+                    genderVal =  x['photos'][0]['tags'][0]['attributes']['gender']['value']
+                    moodVal = x['photos'][0]['tags'][0]['attributes']['mood']['value']
+                    moodConfidence = x['photos'][0]['tags'][0]['attributes']['mood']['confidence']
+                    genderConfidence =  x['photos'][0]['tags'][0]['attributes']['gender']['confidence']
+                    return 'Person is %s  with %s%% confidence, current mood %s with %s%% confidence ' %(genderVal , genderConfidence , moodVal , moodConfidence)
 
-            elif x['photos'][0]['tags'][0]['attributes'].has_key('gender'):            
-                genderVal =  x['photos'][0]['tags'][0]['attributes']['gender']['value']
-                genderConfidence =  x['photos'][0]['tags'][0]['attributes']['gender']['confidence']
-                return 'Person is %s  with %s%% confidence' %(genderVal , genderConfidence)
+                elif x['photos'][0]['tags'][0]['attributes'].has_key('gender'):            
+                    genderVal =  x['photos'][0]['tags'][0]['attributes']['gender']['value']
+                    genderConfidence =  x['photos'][0]['tags'][0]['attributes']['gender']['confidence']
+                    return 'Person is %s  with %s%% confidence' %(genderVal , genderConfidence)
+                else:
+                    return "Couldn't find a face or something , mebbe too ugly?"
             else:
                 return "Couldn't find a face or something , mebbe too ugly?"
-        else:
-            return "Couldn't find a face or something , mebbe too ugly?"
+        except:
+            return "Probably couldn't find a face or something broke or w/e deal with it !!!"
 
     return None
 
