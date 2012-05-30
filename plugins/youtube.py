@@ -38,5 +38,4 @@ def hook(nick, ident, host, message):
     string += locale.format("%d", float(entry.statistics.view_count), True) + "\u000f views - \u0002"
     string += entry.author[0].name.text + "\u000f on \u0002"
     string += time.strftime("%Y.%m.%d", time.strptime(entry.published.text, "%Y-%m-%dT%H:%M:%S.000Z"))
-    print(string)
-    return None
+    return string
