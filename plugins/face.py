@@ -25,7 +25,8 @@ def checkValidImage(url):
     return None
 
 def hook(nick, ident, host, message):    
-
+    if re.match('.face help' , message):
+        return 'Usage , .face <imgurl> OR .passmeter <imgurl> , to let it recognize your face.learn <your face img> '
     if re.match('.face', message) or re.match('.passmeter',message):
         imgurl = message.lstrip('.face ')
         imgurl = imgurl.lstrip('.passmeter ')
