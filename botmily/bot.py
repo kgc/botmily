@@ -41,4 +41,7 @@ class Bot(irc.IRCClient):
         for function in self.hooks:
             output = function(nick, ident, host, message)
             if output is not None:
-                self.say(channel, str(output))
+                if self.nickname == channel:
+                    self.msg(str(nick),str(output))
+                else:
+                    self.msg(channel, str(output))
