@@ -60,16 +60,16 @@ def makeBlurb(face):
                     if len(tag['attributes'].keys()) > 1:
                         facecount += 1
                 if facecount > 1:
-                    blurb = '%s faces in this photo ,' %facecount
+                    blurb = '%s faces in this photo, ' %facecount
+                    faceNum = 1
                     for tag in photo['tags']:
                         if len(tag['attributes'].keys()) > 1:
-                            blurb = blurb +' Face %i:  ' %faceNum +  getTagBlurb(tag) 
+                            blurb = blurb +' Face %i: ' %faceNum +  getTagBlurb(tag) 
                             faceNum += 1
-                elif facecount == 1:                
-                    blurb = 'One face in this photo ,' + getTagBlurb(tag)
+                elif facecount == 1:
+                    blurb = 'One face in this photo, ' + getTagBlurb(tag)
                 else:
                     return None
-                faceNum = 1
                 
                 return blurb
     except Exception , e:
@@ -77,19 +77,44 @@ def makeBlurb(face):
         print '\nFace Json :'
         print face
     return None
+    
+def cleanTags(tags):
+    tids = {}
+    toPurge = []
+    try:
+        if len(tags['photos']) == 1:
+            photo = tags['photos'][0]
+            if photo.has_key('tags'):
+                for tag in photo['tags']:
+                    if tids.has_key(tag['tid']):
+                        toPurge.append(tag)
+                    elif len(tag['attributes'].keys()) < 2:
+                        toPurge.append(tag)
+                    else:
+                        tids[tag['tid']] = True
+
+    except Exception , e:
+        print e
+        print '\nFace Json :'
+        print tags
+
+    for tag in toPurge:
+        tags['photos'][0]['tags'].remove(tag)
+    return tags
 
 def getTagBlurb(tag):
+    print 'blargh'
     stringDict = {'gender' : '' , 'age' : '' , 'face' : '','glasses':'' , 'smiling':'' , 'lips':'' , 'mood': ''}
-    attributes = tag['attributes']    
+    attributes = tag['attributes']   
     for attribute in attributes:
         if attribute == 'gender':
-            stringDict['gender'] = " \u0002Gender\u000f %s (%s%%)" %(attributes[attribute]['value'],attributes[attribute]['confidence'])
+            stringDict['gender'] = "\u0002%s\u000f(%s%%) " %(attributes[attribute]['value'],attributes[attribute]['confidence'])
 
         if attribute == 'age_est':
-            stringDict['age'] = " \u0002Age\u000f: %s (%s%%)" %(attributes[attribute]['value'],attributes[attribute]['confidence'])
+            stringDict['age'] = "\u0002Age\u000f: %s(%s%%) " %(attributes[attribute]['value'],attributes[attribute]['confidence'])
 
         if attribute == 'mood':
-            stringDict['mood'] =  " \u0002Mood\u000f: %s (%s%%) "%(attributes[attribute]['value'],attributes[attribute]['confidence'])
+            stringDict['mood'] =  "\u0002%s\u000f(%s%%) "%(attributes[attribute]['value'],attributes[attribute]['confidence'])
     blurb = stringDict['gender'] + stringDict['age'] + stringDict['mood'] 
     return blurb
 
@@ -105,7 +130,7 @@ def getPeopleBlurb(tags):
                         users.append(tag['uids'][0]['uid'].rstrip('@shughes.uk'))
         if len(users) > 0:
             for user in users:
-                blurb = blurb +  '%s ,' %user
+                blurb = blurb +  '%s,' %user
             return blurb + ' could be in this photo'
         else:
             return None

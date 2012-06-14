@@ -4,10 +4,11 @@ from urlparse import urlparse
 import random
 import re
 import httplib, urllib , base64 , json 
-import faceapi
+import faceapi , imgur
 from botmily.db import db
 from botmily import config
 from pprint import pprint
+import faceSquares, imgur
 
 
 regex = r'\(?\bhttp://[-A-Za-z0-9+&@#/%?=~_()|!:,.;]*[-A-Za-z0-9+&@#/%=~_()|]'
@@ -34,13 +35,20 @@ def hook(nick, ident, host, message):
         if invalid:
             return invalid   
         result = faceapi.Detect(imgurl)
+        result = faceapi.cleanTags(result)
         characteristics = faceapi.makeBlurb(result)
+        if characteristics:
+            img = faceSquares.drawTags(result['photos'][0]['tags'],imgurl)
+            img.save('temp.png', 'PNG')
+            postedUrl = imgur.postToImgur(str('temp.png'))
         result = faceapi.Recognize(imgurl)
         who = faceapi.getPeopleBlurb(result)
-        if who:
-            return characteristics + who
+        if who and characteristics:
+            return characteristics + who + ', what I saw %s' %postedUrl
+        elif characteristics:
+            return characteristics + ', what I saw %s' %postedUrl
         else:
-            return characteristics
+            return "Couldn't find a face :("
 
     if re.match('.recognize',message):
         imgurl = message.lstrip('.recognize ')
@@ -70,7 +78,9 @@ def hook(nick, ident, host, message):
     if invalid:
         return None
     result = faceapi.Recognize(image_uri)
-    return faceapi.getPeopleBlurb(result) + ' ' + image_uri
+    people = faceapi.getPeopleBlurb(result)
+    if people:
+        return people + ' ' + image_uri
 
 
 
