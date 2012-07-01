@@ -22,7 +22,7 @@ def convertHMS(secs):
         return '%d seconds' %d.second 
   
 
-def hook(nick, ident, host, message):
+def hook(nick, ident, host, message, bot, channel):
     video_uri = re.search(regex, message, re.I)
     if video_uri is None:
         return None

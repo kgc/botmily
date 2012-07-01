@@ -7,6 +7,7 @@ import re
 from botmily import ircify
 
 def hook(nick, ident, host, message, bot, channel):
-    if re.search('im gay', ircify.ircify(message)) is None:
+    if re.search('check your .*privilege', ircify.ircify(message), re.I) is None:
         return None
-    return 'same'
+    bot.kick(str(channel), str(nick));
+    return 'out'

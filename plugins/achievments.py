@@ -29,7 +29,7 @@ def checkAchievs(nick , host , message):
     else:
         return None
 
-def hook(nick, ident, host, message):
+def hook(nick, ident, host, message, bot, channel):
     db.execute("create table if not exists achiv(aid integer , host text , value integer)")
     if re.match('.achievements',message):
         result = achievChecks.listAchievs(host)

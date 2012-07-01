@@ -39,7 +39,7 @@ class Bot(irc.IRCClient):
     def privmsg(self, user, channel, message):
         nick, ident, host = splituser(user)
         for function in self.hooks:
-            output = function(nick, ident, host, message)
+            output = function(nick, ident, host, unicode(message), self, channel)
             if output is not None:
                 if self.nickname == channel:
                     self.msg(str(nick),str(output))
