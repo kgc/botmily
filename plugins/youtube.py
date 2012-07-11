@@ -24,7 +24,7 @@ def convertHMS(secs):
 
 def hook(nick, ident, host, message):
     if re.match('.yt ', message):
-        search = message[4]
+        search = message[4:]
         yt_service = service.YouTubeService()
         query = service.YouTubeVideoQuery()
         query.vq = search
@@ -33,7 +33,7 @@ def hook(nick, ident, host, message):
         feed = yt_service.YouTubeQuery(query)
         title = feed.entry[0].title.text
         link = feed.entry[0].link[0].href
-        return "\u0002title \u000f - %s \u0002 url \u000f - %s" %(title , link)
+        return "\u0002%s\u000f - %s" %(title , link)
 
     video_uri = re.search(regex, message, re.I)
     if video_uri is None:
