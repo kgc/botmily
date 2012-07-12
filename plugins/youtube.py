@@ -22,6 +22,7 @@ def convertHMS(secs):
         return '%d seconds' %d.second 
   
 
+<<<<<<< HEAD
 def hook(nick, ident, host, message):
     if re.match('.yt ', message):
         search = message[4:]
@@ -35,6 +36,9 @@ def hook(nick, ident, host, message):
         link = feed.entry[0].link[0].href
         return "\u0002%s\u000f - %s" %(title , link)
 
+=======
+def hook(nick, ident, host, message, bot, channel):
+>>>>>>> 1712dabffc5bb8d51a6c830e57a1addd754a4746
     video_uri = re.search(regex, message, re.I)
     if video_uri is None:
         return None

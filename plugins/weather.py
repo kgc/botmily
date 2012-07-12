@@ -10,7 +10,7 @@ from xml.etree import ElementTree
 
 from botmily.db import db
 
-def hook(nick, ident, host, message):
+def hook(nick, ident, host, message, bot, channel):
     if re.match('.wea', message) is None:
         return None
 

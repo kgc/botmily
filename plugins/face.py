@@ -25,7 +25,7 @@ def checkValidImage(url):
         return 'Not recognized image type , type .jpg , .png , .jpeg or .gif'    
     return None
 
-def hook(nick, ident, host, message):    
+def hook(nick, ident, host, message, bot, channel):    
     if re.match('.face help' , message):
         return 'Usage , .face <imgurl> OR .passmeter <imgurl> , to let it recognize your face.learn <your face img> '
     if re.match('.face', message) or re.match('.passmeter',message):
