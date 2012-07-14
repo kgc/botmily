@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 
 import pkgutil
 import re
+import sys
 
 from twisted.words.protocols import irc
 
@@ -39,9 +40,13 @@ class Bot(irc.IRCClient):
     def privmsg(self, user, channel, message):
         nick, ident, host = splituser(user)
         for function in self.hooks:
-            output = function(nick, ident, host, unicode(message), self, channel)
-            if output is not None:
-                if self.nickname == channel:
-                    self.msg(str(nick),str(output))
-                else:
-                    self.msg(channel, str(output))
+            try:
+                output = function(nick, ident, host, unicode(message), self, channel)
+                if output is not None:
+                    if self.nickname == channel:
+                        self.msg(str(nick),str(output))
+                    else:
+                        self.msg(channel, str(output))
+            except:
+                print("Unexpected error running plugin " + function + ": " + sys.exc_info()[0])
+
