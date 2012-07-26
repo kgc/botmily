@@ -48,5 +48,6 @@ class Bot(irc.IRCClient):
                     else:
                         self.msg(channel, str(output))
             except:
-                print("Unexpected error running plugin " + function + ": " + sys.exc_info()[0])
+                print("Unexpected error running a plugin")
+                sys.excepthook(*sys.exc_info())
 
