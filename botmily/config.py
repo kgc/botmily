@@ -12,6 +12,7 @@ tumblr_user = ''
 tumblr_password = ''
 tumblr_title = ''
 tumblr_tumbling = False
+wolframalpha_api_key = ''
 
 def getConfig():
     global name
@@ -22,6 +23,7 @@ def getConfig():
     global tumblr_password
     global tumblr_title
     global tumblr_tumbling
+    global wolframalpha_api_key
     config = ConfigParser()
     config.read('config.ini')
     name = config.get('main', 'name')
@@ -32,7 +34,7 @@ def getConfig():
     tumblr_user = config.get('tumblr' , 'user')
     tumblr_password = config.get('tumblr', 'password')
     tumblr_title = config.get('tumblr','post_titles')
-    print(tumblr_tumbling)
+    wolframalpha_api_key = config.get('wolframalpha', 'api_key')
     print("I will use the name: " + name)
     print("I will connect to the server: " + server)
     print("I will connect to the channels: " + ", ".join(channels))
