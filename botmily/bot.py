@@ -44,9 +44,9 @@ class Bot(irc.IRCClient):
                 output = function(nick, ident, host, unicode(message), self, channel)
                 if output is not None:
                     if self.nickname == channel:
-                        self.msg(str(nick),str(output))
+                        self.msg(str(nick), output.encode('utf-8'))
                     else:
-                        self.msg(channel, str(output))
+                        self.msg(channel, output.encode('utf-8'))
             except:
                 print("Unexpected error running a plugin")
                 sys.excepthook(*sys.exc_info())
