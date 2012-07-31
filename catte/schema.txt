@@ -1,0 +1,4 @@
+CREATE TABLE raw_pages (page_number integer primary key autoincrement, page_data);
+CREATE TABLE raw_images (image_number integer primary key autoincrement, image_url, image_data);
+CREATE TABLE deferred_images (image_url, attempt_count);
+CREATE TABLE cattes (catte_number integer primary key autoincrement, image);
