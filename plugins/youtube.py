@@ -44,11 +44,11 @@ def hook(nick, ident, host, message, bot, channel):
         youtube.ssl = True
         entry = youtube.GetYouTubeVideoEntry(video_id=id)
         string = "\u0002"
-        string += entry.media.title.text + "\u000f - length \u0002"
+        string += unicode(entry.media.title.text, encoding='utf-8') + "\u000f - length \u0002"
         string += convertHMS(entry.media.duration.seconds) + "\u000f - rated \u0002"
         string += locale.format("%.2f", float(entry.rating.average)) + "/5.0\u000f ("
         string += entry.rating.num_raters + ") - \u0002"
         string += locale.format("%d", float(entry.statistics.view_count), True) + "\u000f views - \u0002"
-        string += entry.author[0].name.text + "\u000f on \u0002"
+        string += unicode(entry.author[0].name.text, encoding='utf-8') + "\u000f on \u0002"
         string += time.strftime("%Y.%m.%d", time.strptime(entry.published.text, "%Y-%m-%dT%H:%M:%S.000Z"))
         return string
