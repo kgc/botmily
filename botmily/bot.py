@@ -41,7 +41,7 @@ class Bot(irc.IRCClient):
         nick, ident, host = splituser(user)
         for function in self.hooks:
             try:
-                output = function(nick, ident, host, unicode(message), self, channel)
+                output = function(nick, ident, host, unicode(message, encoding='utf-8'), self, channel)
                 if output is not None:
                     if self.nickname == channel:
                         self.msg(str(nick), output.encode('utf-8'))

@@ -16,7 +16,7 @@ def hook(nick, ident, host, message, bot, channel):
         return None
 
     query = message[4:]
-    result = urlopen('http://api.wolframalpha.com/v2/query?format=plaintext&input=' + quote_plus(query) + '&appid=' + config.wolframalpha_api_key)
+    result = urlopen('http://api.wolframalpha.com/v2/query?format=plaintext&input=' + quote_plus(query.encode('utf-8')) + '&appid=' + config.wolframalpha_api_key)
     root = ElementTree.fromstring(result.read())
     pods = root.findall('pod')
     result_string = ''
