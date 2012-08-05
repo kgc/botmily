@@ -7,7 +7,6 @@ import re
 import json
 import urllib2
 
-from botmily import ircify
 regex1 = r'\$([0-9]+\.?[0-9][0-9]?)'
 regex2 = r".*?(\d+\.?\d\d)[     ]*dolla"
 
@@ -25,7 +24,7 @@ def get_btc_price():
 def hook(nick, ident, host, message, bot, channel):
     if re.match('\.bit', message) is not None:
         tick = get_btc_price()
-        return "Current price: \u00037$" + str(tick['last']) + "\u000f - High: \u00037$" + str(tick['high']) + "\u000f - Low: \u00037$" + str(tick['low']) + "\u000f - Volume: " + str(tick['volume']) + "BTC"
+        return "Current price: $" + irc.color(str(tick['last']), 'orange') + " - High: $" + irc.color(str(tick['high']), 'orange') + " - Low: $" + irc.color(str(tick['low']), 'orange') + " - Volume: " + str(tick['volume']) + "BTC"
 
     money = re.search(regex1, message, re.I)
     if money is None:

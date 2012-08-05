@@ -8,6 +8,8 @@ import re
 from urllib2 import urlopen
 from xml.etree import ElementTree
 
+from botmily import irc
+
 def hook(nick, ident, host, message, bot, channel):
     if re.match('\.sto', message) is None:
         return None
@@ -24,12 +26,12 @@ def hook(nick, ident, host, message, bot, channel):
     string = nick + ': '
     string += company + ' - '
     string += last + ' '
-    string += currency + ' \u0003'
+    string += currency + ' '
+    change_string = change + ' (' + perc_change + ')'
     if change[0] == '-':
-        string += '5'
+        string += irc.color(change_string, 'brown')
     else:
-        string += '3'
-    string += change + ' ('
-    string += perc_change + ')\u000f as of '
+        string += irc.color(change_string, 'green')
+    string += ' as of '
     string += trade_timestamp
     return string

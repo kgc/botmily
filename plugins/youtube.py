@@ -43,12 +43,11 @@ def hook(nick, ident, host, message, bot, channel):
         youtube = service.YouTubeService()
         youtube.ssl = True
         entry = youtube.GetYouTubeVideoEntry(video_id=id)
-        string = "\u0002"
-        string += unicode(entry.media.title.text, encoding='utf-8') + "\u000f - length \u0002"
-        string += convertHMS(entry.media.duration.seconds) + "\u000f - rated \u0002"
-        string += locale.format("%.2f", float(entry.rating.average)) + "/5.0\u000f ("
-        string += entry.rating.num_raters + ") - \u0002"
-        string += locale.format("%d", float(entry.statistics.view_count), True) + "\u000f views - \u0002"
-        string += unicode(entry.author[0].name.text, encoding='utf-8') + "\u000f on \u0002"
-        string += time.strftime("%Y.%m.%d", time.strptime(entry.published.text, "%Y-%m-%dT%H:%M:%S.000Z"))
+        string = irc.bold(unicode(entry.media.title.text, encoding='utf-8')) + " - length "
+        string += irc.bold(convertHMS(entry.media.duration.seconds)) + " - rated "
+        string += irc.bold(locale.format("%.2f", float(entry.rating.average))) + "/5.0 ("
+        string += entry.rating.num_raters + ") - "
+        string += irc.bold(locale.format("%d", float(entry.statistics.view_count), True)) + " views - "
+        string += irc.bold(unicode(entry.author[0].name.text, encoding='utf-8')) + " on "
+        string += irc.bold(time.strftime("%Y.%m.%d", time.strptime(entry.published.text, "%Y-%m-%dT%H:%M:%S.000Z")))
         return string

@@ -4,10 +4,10 @@ from __future__ import unicode_literals
 
 import re
 
-from botmily import ircify
+from botmily import irc
 
 def hook(nick, ident, host, message, bot, channel):
-    if re.search('check your .*privilege', ircify.ircify(message), re.I) is None:
+    if re.search('check your .*privilege', irc.clear(message), re.I) is None:
         return None
     bot.kick(str(channel), str(nick));
     return 'out'
