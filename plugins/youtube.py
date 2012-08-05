@@ -28,7 +28,7 @@ def hook(nick, ident, host, message, bot, channel):
         yt_service = service.YouTubeService()
         query = service.YouTubeVideoQuery()
         query.vq = search
-        query.orderby = 'viewCount'
+        query.orderby = 'relevance'
         query.racy = 'include'
         feed = yt_service.YouTubeQuery(query)
         title = feed.entry[0].title.text
