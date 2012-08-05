@@ -1,3 +1,4 @@
+from http.client import HTTPException
 import re
 import sqlite3
 import time
@@ -8,7 +9,7 @@ from bs4 import BeautifulSoup
 
 def get_posts(page):
     print("Getting posts...")
-    soup = BeautifulSoup(page)
+    soup = BeautifulSoup(page, from_encoding="iso-8859-1")
     posts = soup.find_all('table', id=re.compile("post[0-9]+"))
     if len(posts) != 40:
         print("Broken page")
@@ -54,7 +55,7 @@ def parse_posts(posts):
             response = urlopen(image)
             if response.info().get_content_maintype() != 'image':
                 found = False
-        except URLError:
+        except (URLError, HTTPException):
             found = False
         if found is False:
             print("Image temporarily deferred")
