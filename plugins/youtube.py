@@ -8,6 +8,8 @@ import time
 from datetime import datetime, timedelta
 from gdata.youtube import service
 
+from botmily import irc
+
 regex = r'(?:youtube.*?(?:v=|/v/)|youtu\.be/|yooouuutuuube.*?id=)([-_a-z0-9]+)'
 def convertHMS(secs):
     sec = timedelta(seconds=int(secs))
