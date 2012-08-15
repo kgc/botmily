@@ -68,8 +68,8 @@ class Bot(irc.IRCClient):
                 self.say(nick, channel, "Did you mean: " + ",".join(commands_formatted) + "?")
         for tup in self.triggers:
             trigger, function = tup
-            if re.search(trigger, message_data["message"]) is not None:
-                message_data["re"] = re.search(trigger, message_data["message"])
+            if re.search(trigger, message_data["message"], re.I) is not None:
+                message_data["re"] = re.search(trigger, message_data["message"], re.I)
                 output = function(message_data, self)
                 self.say(nick, channel, output)
 
