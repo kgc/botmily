@@ -57,8 +57,6 @@ class Bot(irc.IRCClient):
                     break
                 if command.find(sent_command) == 0:
                     possible_commands.append((command, function))
-            if len(possible_commands) == 0:
-                self.say(nick, channel, "Unknown command")
             if len(possible_commands) == 1:
                 message_data["command"] = possible_commands[0][0]
                 output = possible_commands[0][1](message_data, self)
