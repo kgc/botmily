@@ -7,9 +7,10 @@ from __future__ import unicode_literals
 import re
 from urllib2 import urlopen
 
-def hook(nick, ident, host, message, bot, channel):
-    if re.match('\.catte', message) is None:
-        return
-
+def catte(message_data, bot):
     result = urlopen('http://cattes.me:3333/random')
     return 'http://cattes.me:3333/images/' + result.read()
+
+commands = {"catte": catte}
+triggers = []
+

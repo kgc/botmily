@@ -10,16 +10,18 @@ from urllib2 import urlopen
 
 from BeautifulSoup import BeautifulStoneSoup
 
-def hook(nick, ident, host, message, bot, channel):
+def fourchan(message_data, bot):
     board = ''
-    if re.match('\.anime', message) is not None:
-        board = '/a/'
-    if re.match('\.dick', message) is not None:
-        board = '/d/'
-    if board == '':
-        return
+    if message_data['command'] == "anime":
+        board = "/a/"
+    if message_data['command'] == "dick":
+        board = "/d/"
 
     result = urlopen('http://boards.4chan.org' + board)
     soup = BeautifulStoneSoup(result, convertEntities=BeautifulStoneSoup.HTML_ENTITIES)
     images = soup.findAll('a', attrs={'class': 'fileThumb'})
     return 'http:' + random.choice(images)['href']
+
+commands = {"anime": fourchan, "dick": fourchan}
+triggers = []
+

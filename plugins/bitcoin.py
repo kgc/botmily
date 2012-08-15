@@ -21,20 +21,15 @@ def get_btc_price():
     data['volume'] = float(tick['vol']['value'])
     return data
 
-def hook(nick, ident, host, message, bot, channel):
-    if re.match('\.bit', message) is not None:
-        tick = get_btc_price()
-        return "Current price: $" + irc.color(str(tick['last']), 'orange') + " - High: $" + irc.color(str(tick['high']), 'orange') + " - Low: $" + irc.color(str(tick['low']), 'orange') + " - Volume: " + str(tick['volume']) + "BTC"
+def btc_price(message_data, bot):
+    tick = get_btc_price()
+    return "Current price: $" + irc.color(str(tick['last']), 'orange') + " - High: $" + irc.color(str(tick['high']), 'orange') + " - Low: $" + irc.color(str(tick['low']), 'orange') + " - Volume: " + str(tick['volume']) + "BTC"
 
-    money = re.search(regex1, message, re.I)
-    if money is None:
-        money = re.search(regex2,message,re.I)
-        if money is None:
-            return None
-        else:
-            amount = float(money.group(1))
-    else:
-        amount = float(money.group(1))
+def btc_convert(message_data, bot):
+    amount = float(message_data["re"].group(1))
     avg = get_btc_price()['average']
-    return '%s if you converted that to bitcoins you could have %f BTC!' %(nick , (amount / avg))
+    return 'If you converted that to bitcoins you could have %f BTC!' %((amount / avg))
+
+commands = {"bitcoin": btc_price, "btc": btc_price}
+triggers = [(regex1, btc_convert), (regex2, btc_convert)]
 

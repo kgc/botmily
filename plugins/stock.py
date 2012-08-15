@@ -10,11 +10,8 @@ from xml.etree import ElementTree
 
 from botmily import irc
 
-def hook(nick, ident, host, message, bot, channel):
-    if re.match('\.sto', message) is None:
-        return None
-
-    result = urlopen('http://www.google.com/ig/api?stock=' + message[5:])
+def stock(message_data, bot):
+    result = urlopen('http://www.google.com/ig/api?stock=' + message_data["parsed"])
     root = ElementTree.fromstring(result.read())
     finance = root.find('finance')
     company = finance.find('company').get('data')
@@ -35,3 +32,7 @@ def hook(nick, ident, host, message, bot, channel):
     string += ' as of '
     string += trade_timestamp
     return string
+
+commands = {"stock": stock}
+triggers = []
+

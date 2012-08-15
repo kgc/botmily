@@ -10,19 +10,16 @@ from xml.etree import ElementTree
 
 from botmily.db import db
 
-def hook(nick, ident, host, message, bot, channel):
-    if re.match('.wea', message) is None:
-        return None
-
+def weather(message_data, bot):
     db.execute("create table if not exists weather(nick primary key, loc)")
-    loc = message[5:]
-    if len(message) < 6:
-        row = db.execute("select loc from weather where nick=:nick", {"nick": nick}).fetchone()
+    loc = message_data["parsed"]
+    if loc == "":
+        row = db.execute("select loc from weather where nick=:nick", {"nick": message_data["nick"]}).fetchone()
         if not row:
-            return 'Type in a location ¬_¬'.encode('latin-1')
+            return 'Type in a location ¬_¬'
         loc = row[0]
     else:
-        db.execute("insert or replace into weather(nick, loc) values (:nick, :loc)", {"nick": nick, "loc": loc})
+        db.execute("insert or replace into weather(nick, loc) values (:nick, :loc)", {"nick": message_data["nick"], "loc": loc})
         db.commit()
     result = urlopen('http://www.google.com/ig/api?weather=' + loc)
     root = ElementTree.fromstring(result.read())
@@ -39,3 +36,7 @@ def hook(nick, ident, host, message, bot, channel):
     string = string + current_conditions.find('humidity').get('data') + ', '
     string = string + current_conditions.find('wind_condition').get('data') + '.'
     return string
+
+commands = {"weather": weather}
+triggers = []
+

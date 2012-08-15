@@ -6,8 +6,10 @@ import re
 
 from botmily import irc
 
-def hook(nick, ident, host, message, bot, channel):
-    if re.search('check your .*privilege', irc.clear(message), re.I) is None:
-        return None
-    bot.kick(str(channel), str(nick));
+def privilege(message_data, bot):
+    bot.kick(str(message_data["channel"]), str(message_data["nick"]));
     return 'out'
+
+commands = {}
+triggers = [("check your .*privilege", privilege)]
+

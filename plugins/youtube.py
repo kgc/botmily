@@ -11,6 +11,7 @@ from gdata.youtube import service
 from botmily import irc
 
 regex = r'(?:youtube.*?(?:v=|/v/)|youtu\.be/|yooouuutuuube.*?id=)([-_a-z0-9]+)'
+
 def convertHMS(secs):
     sec = timedelta(seconds=int(secs))
     d = datetime(1,1,1) + sec
@@ -23,33 +24,31 @@ def convertHMS(secs):
     else:   
         return '%d seconds' %d.second 
   
+def search(message_data, bot):
+    yt_service = service.YouTubeService()
+    query = service.YouTubeVideoQuery()
+    query.vq = message_data["parsed"]
+    query.orderby = 'relevance'
+    query.racy = 'include'
+    feed = yt_service.YouTubeQuery(query)
+    title = feed.entry[0].title.text
+    link = feed.entry[0].link[0].href
+    return "\u0002%s\u000f - %s" %(title , link)
 
-def hook(nick, ident, host, message, bot, channel):
-    if re.match('.yt ', message):
-        search = message[4:]
-        yt_service = service.YouTubeService()
-        query = service.YouTubeVideoQuery()
-        query.vq = search
-        query.orderby = 'relevance'
-        query.racy = 'include'
-        feed = yt_service.YouTubeQuery(query)
-        title = feed.entry[0].title.text
-        link = feed.entry[0].link[0].href
-        return "\u0002%s\u000f - %s" %(title , link)
-    else:
-        video_uri = re.search(regex, message, re.I)
-        if video_uri is None:
-            return None
+def parse(message_data, bot):
+    id = message_data["re"].group(1)
+    youtube = service.YouTubeService()
+    youtube.ssl = True
+    entry = youtube.GetYouTubeVideoEntry(video_id=id)
+    string = irc.bold(unicode(entry.media.title.text, encoding='utf-8')) + " - length "
+    string += irc.bold(convertHMS(entry.media.duration.seconds)) + " - rated "
+    string += irc.bold(locale.format("%.2f", float(entry.rating.average))) + "/5.0 ("
+    string += entry.rating.num_raters + ") - "
+    string += irc.bold(locale.format("%d", float(entry.statistics.view_count), True)) + " views - "
+    string += irc.bold(unicode(entry.author[0].name.text, encoding='utf-8')) + " on "
+    string += irc.bold(time.strftime("%Y.%m.%d", time.strptime(entry.published.text, "%Y-%m-%dT%H:%M:%S.000Z")))
+    return string
 
-        id = video_uri.group(1)
-        youtube = service.YouTubeService()
-        youtube.ssl = True
-        entry = youtube.GetYouTubeVideoEntry(video_id=id)
-        string = irc.bold(unicode(entry.media.title.text, encoding='utf-8')) + " - length "
-        string += irc.bold(convertHMS(entry.media.duration.seconds)) + " - rated "
-        string += irc.bold(locale.format("%.2f", float(entry.rating.average))) + "/5.0 ("
-        string += entry.rating.num_raters + ") - "
-        string += irc.bold(locale.format("%d", float(entry.statistics.view_count), True)) + " views - "
-        string += irc.bold(unicode(entry.author[0].name.text, encoding='utf-8')) + " on "
-        string += irc.bold(time.strftime("%Y.%m.%d", time.strptime(entry.published.text, "%Y-%m-%dT%H:%M:%S.000Z")))
-        return string
+commands = {"yt": search, "youtube": search}
+triggers = [(regex, parse)]
+

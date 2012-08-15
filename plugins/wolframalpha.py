@@ -11,12 +11,8 @@ from xml.etree import ElementTree
 
 from botmily import config
 
-def hook(nick, ident, host, message, bot, channel):
-    if re.match('.wa', message) is None:
-        return None
-
-    query = message[4:]
-    result = urlopen('http://api.wolframalpha.com/v2/query?format=plaintext&input=' + quote_plus(query.encode('utf-8')) + '&appid=' + config.wolframalpha_api_key)
+def wa(message_data, bot):
+    result = urlopen('http://api.wolframalpha.com/v2/query?format=plaintext&input=' + quote_plus(message_data["parsed"]) + '&appid=' + config.wolframalpha_api_key)
     root = ElementTree.fromstring(result.read())
     pods = root.findall('pod')
     result_string = ''
@@ -24,4 +20,7 @@ def hook(nick, ident, host, message, bot, channel):
         if pod.get('id') != 'Input' and pod.findtext('subpod/plaintext') != '':
             result_string += pod.get('title') + ': ' + pod.findtext('subpod/plaintext').strip().replace('\n', ' ') + '. '
     return result_string
+
+commands = {"wa": wa}
+triggers = []
 

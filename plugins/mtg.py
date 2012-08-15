@@ -10,11 +10,8 @@ from urllib2 import urlopen
 
 from BeautifulSoup import BeautifulStoneSoup
 
-def hook(nick, ident, host, message, bot, channel):
-    if re.match('\.mtg', message) is None:
-        return
-
-    result = urlopen('http://magiccards.info/query?v=card&s=cname&q=' + quote_plus(message[5:].encode('utf-8')))
+def mtg(message_data, bot):
+    result = urlopen('http://magiccards.info/query?v=card&s=cname&q=' + quote_plus(message_data["parsed"]))
     soup = BeautifulStoneSoup(result, convertEntities=BeautifulStoneSoup.HTML_ENTITIES)
     card = soup.findAll('table', align='center')[1]
     output = card.find('a').text + ' | '
@@ -23,3 +20,7 @@ def hook(nick, ident, host, message, bot, channel):
     output += card.find('small').findAll('b')[1].text + ' | '
     output += 'http://magiccards.info' + card.find('a')['href']
     return output
+
+commands = {"mtg": mtg}
+triggers = []
+

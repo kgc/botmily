@@ -9,10 +9,11 @@ from urllib2 import urlopen
 
 from BeautifulSoup import BeautifulStoneSoup
 
-def hook(nick, ident, host, message, bot, channel):
-    if re.match('\.et', message) is None:
-        return None
-
-    result = urlopen('http://www.etymonline.com/index.php?term=' + message[4:])
+def etymology(message_data, bot):
+    result = urlopen('http://www.etymonline.com/index.php?term=' + message_data["parsed"])
     soup = BeautifulStoneSoup(result, convertEntities=BeautifulStoneSoup.HTML_ENTITIES)
     return "".join(soup.dl.findAll(text=True)).replace("\n", " ")
+
+commands = {"etymology": etymology}
+triggers = []
+

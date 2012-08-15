@@ -7,9 +7,10 @@ import re
 
 from botmily import irc
 
-def hook(nick, ident, host, message, bot, channel):
-    if re.search('blippy', irc.clear(message)) is None:
-        return None
+def blippy(message_data, bot):
     if random.randint(0, 9) == 0:
         return 'blippy owns'
-    return None
+
+commands = {}
+triggers = [("blippy", blippy)]
+

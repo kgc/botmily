@@ -12,12 +12,8 @@ from xml.etree import ElementTree
 from botmily import config
 from botmily import irc
 
-def hook(nick, ident, host, message, bot, channel):
-    if re.match('\.last', message) is None:
-        return None
-
-    query = message[6:]
-    result = urlopen('http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=' + quote_plus(query.encode('utf-8')) + '&api_key=' + config.lastfm_api_key)
+def lastfm(message_data, bot):
+    result = urlopen('http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=' + quote_plus(message_data["parsed"]) + '&api_key=' + config.lastfm_api_key)
     root = ElementTree.fromstring(result.read())
     track = root.find('recenttracks/track')
     result_string = irc.bold(query) + '\'s last track - '
@@ -25,4 +21,7 @@ def hook(nick, ident, host, message, bot, channel):
     result_string += irc.bold(track.find('artist').text) + ' :: Link to Song - '
     result_string += irc.bold(track.find('url').text)
     return result_string
+
+commands = {"lastfm": lastfm}
+triggers = []
 

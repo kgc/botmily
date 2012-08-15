@@ -6,7 +6,9 @@ import re
 
 from botmily import irc
 
-def hook(nick, ident, host, message, bot, channel):
-    if re.search('im gay', irc.clear(message)) is None:
-        return None
+def imgay(message_data, bot):
     return 'same'
+
+commands = {}
+triggers = [("im gay", imgay)]
+
