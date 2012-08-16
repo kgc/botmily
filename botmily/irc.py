@@ -8,22 +8,22 @@ controls = {'bold':  '\u0002',
             'color': '\u0003',
             'clear': '\u000f'}
 
-colors = {'white':        '0',
-          'black':        '1',
-          'blue':         '2',
-          'green':        '3',
-          'red':          '4',
-          'brown':        '5',
-          'purple':       '6',
-          'orange':       '7',
-          'yellow':       '8',
-          'light green':  '9',
-          'teal':        '10',
-          'light cyan':  '11',
-          'light blue':  '12',
-          'pink':        '13',
-          'grey':        '14',
-          'light grey':  '15'}
+colors = {'white':        '00',
+          'black':        '01',
+          'blue':         '02',
+          'green':        '03',
+          'red':          '04',
+          'brown':        '05',
+          'purple':       '06',
+          'orange':       '07',
+          'yellow':       '08',
+          'light green':  '09',
+          'teal':         '10',
+          'light cyan':   '11',
+          'light blue':   '12',
+          'pink':         '13',
+          'grey':         '14',
+          'light grey':   '15'}
 
 def clear(message):
     new_string = ''
