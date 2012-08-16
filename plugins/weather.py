@@ -28,6 +28,8 @@ def weather(message_data, bot):
     root = ElementTree.fromstring(result.read())
     weather = root.find('weather')
     forecast_information = weather.find('forecast_information')
+    if forecast_information is None:
+        return "Error getting weather data"
     current_conditions = weather.find('current_conditions')
     forecast_conditions = weather.find('forecast_conditions')
     string = forecast_information.find('city').get('data') + ': '
