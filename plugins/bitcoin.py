@@ -7,6 +7,8 @@ import re
 import json
 import urllib2
 
+from botmily import irc
+
 regex1 = r'\$([0-9]+\.?[0-9][0-9]?)'
 regex2 = r".*?(\d+\.?\d\d)[     ]*dolla"
 
