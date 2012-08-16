@@ -5,7 +5,7 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 import re
-from urllib2 import urlopen
+import urllib2
 from xml.etree import ElementTree
 
 from botmily.db import db
@@ -21,7 +21,10 @@ def weather(message_data, bot):
     else:
         db.execute("insert or replace into weather(nick, loc) values (:nick, :loc)", {"nick": message_data["nick"], "loc": loc})
         db.commit()
-    result = urlopen('http://www.google.com/ig/api?weather=' + loc)
+    try:
+        result = urllib2.urlopen('http://www.google.com/ig/api?weather=' + loc)
+    except urllib2.URLError:
+        return "Error getting weather data"
     root = ElementTree.fromstring(result.read())
     weather = root.find('weather')
     forecast_information = weather.find('forecast_information')
