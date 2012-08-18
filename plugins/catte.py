@@ -5,10 +5,13 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 import re
-from urllib2 import urlopen
+import urllib2
 
 def catte(message_data, bot):
-    result = urlopen('http://cattes.me:3333/random')
+    try:
+        result = urllib2.urlopen('http://cattes.me:3333/random')
+    except urllib2.URLError:
+        return 'No cattes :('
     return 'http://cattes.me:3333/images/' + result.read()
 
 commands = {"catte": catte}
