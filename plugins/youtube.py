@@ -42,8 +42,9 @@ def parse(message_data, bot):
     entry = youtube.GetYouTubeVideoEntry(video_id=id)
     string = irc.bold(unicode(entry.media.title.text, encoding='utf-8')) + " - length "
     string += irc.bold(convertHMS(entry.media.duration.seconds)) + " - rated "
-    string += irc.bold(locale.format("%.2f", float(entry.rating.average))) + "/5.0 ("
-    string += entry.rating.num_raters + ") - "
+    if entry.rating is not None:
+        string += irc.bold(locale.format("%.2f", float(entry.rating.average))) + "/5.0 ("
+        string += entry.rating.num_raters + ") - "
     string += irc.bold(locale.format("%d", float(entry.statistics.view_count), True)) + " views - "
     string += irc.bold(unicode(entry.author[0].name.text, encoding='utf-8')) + " on "
     string += irc.bold(time.strftime("%Y.%m.%d", time.strptime(entry.published.text, "%Y-%m-%dT%H:%M:%S.000Z")))
