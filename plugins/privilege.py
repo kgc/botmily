@@ -7,7 +7,7 @@ import re
 from botmily import irc
 
 def privilege(message_data, bot):
-    bot.kick(str(message_data["channel"]), str(message_data["nick"]));
+    bot.irc.kick(message_data["channel"], message_data["nick"]);
     return 'out'
 
 commands = {}

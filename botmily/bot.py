@@ -2,25 +2,26 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+import asyncore
 import pkgutil
 import re
+import socket
 import sys
 
-from twisted.words.protocols import irc
-
 from botmily import config
+from botmily import irc
 import plugins
 
-def splituser(user):
-    nick, remainder = user.split('!', 1)
-    ident, host = remainder.split('@', 1)
-    return nick, ident, host
-
-class Bot(irc.IRCClient):
+class bot():
     def __init__(self):
+        self.server = config.server
         self.nickname = config.name
         self.realname = b"Botmily https://github.com/kgc/botmily"
         self.channels = config.channels
+
+        self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.socket.connect((self.server, 6667))
+        self.irc = irc.irc_handler(self.socket, self)
 
         print("Initializing plugins...")
         self.commands = {}
@@ -31,21 +32,17 @@ class Bot(irc.IRCClient):
             self.commands.update(plugin.commands)
             self.triggers.extend(plugin.triggers)
 
-    def signedOn(self):
-        print("Signed on to the IRC server")
-        for channel in self.channels:
-            self.join(str(channel))
+        asyncore.loop()
 
-    def joined(self, channel):
+    def join(self, channel):
         print("Joined channel " + channel)
 
-    def privmsg(self, user, channel, message):
-        nick, ident, host = splituser(user)
+    def privmsg(self, nick, user, host, channel, message):
         message_data = {"nick":    nick,
                         "user":    user,
                         "host":    host,
                         "channel": channel,
-                        "message": unicode(message, encoding='utf-8')}
+                        "message": message}
         command_match = re.match("\.([^ ]+) ?(.*)", message_data["message"])
         if command_match is not None:
             sent_command = command_match.group(1)
@@ -77,7 +74,7 @@ class Bot(irc.IRCClient):
         if output is None:
             return
         if self.nickname == channel:
-            self.msg(str(nick), output.encode("utf-8"))
+            self.irc.privmsg(nick, output)
         else:
-            self.msg(channel, str(nick) + str(": ") + output.encode("utf-8"))
+            self.irc.privmsg(channel, nick + ": " + output)
 
