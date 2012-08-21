@@ -51,7 +51,7 @@ class irc_handler(asynchat.async_chat):
         self.ibuffer = b""
         self.set_terminator(b"\r\n")
         self.bot = bot
-        self.push(b"NICK botmily\r\n")
+        self.push(b"NICK %s\r\n" %bot.nickname)
         self.push(b"USER botmily 0 0 :Botmily\r\n")
 
     def collect_incoming_data(self, data):
