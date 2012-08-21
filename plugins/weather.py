@@ -25,7 +25,10 @@ def weather(message_data, bot):
         result = urllib2.urlopen('http://www.google.com/ig/api?weather=' + loc)
     except urllib2.URLError:
         return "Error getting weather data"
-    root = ElementTree.fromstring(result.read())
+    try:
+        root = ElementTree.fromstring(result.read())
+    except ElementTree.ParseError:
+        return "Error getting weather data"
     weather = root.find('weather')
     forecast_information = weather.find('forecast_information')
     if forecast_information is None:
