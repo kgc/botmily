@@ -18,6 +18,7 @@ def set_tell(message_data, bot):
     return "I'll pass that along."
 
 def get_tell(message_data, bot):
+    db.execute("create table if not exists tells(nick_to, nick_from, message, time, channel)")
     row = db.execute("select nick_to, nick_from, message, time, channel from tells where nick_to=:nick_to", {"nick_to": message_data["nick"].lower()}).fetchone()
     if row:
         bot.irc.notice(message_data["nick"], row[1] + " said " + str(datetime.timedelta(seconds=(time.time() - row[3]))) + " ago in " + row[4] + " the following: " + row[2])
