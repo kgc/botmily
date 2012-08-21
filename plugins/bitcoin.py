@@ -28,6 +28,8 @@ def btc_price(message_data, bot):
     return "Current price: $" + irc.color(str(tick['last']), 'orange') + " - High: $" + irc.color(str(tick['high']), 'orange') + " - Low: $" + irc.color(str(tick['low']), 'orange') + " - Volume: " + str(tick['volume']) + "BTC"
 
 def btc_convert(message_data, bot):
+    if random.randint(0, 9) != 0:
+        return
     amount = float(message_data["re"].group(1))
     avg = get_btc_price()['average']
     return 'If you converted that to bitcoins you could have %f BTC!' %((amount / avg))
