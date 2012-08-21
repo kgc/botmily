@@ -35,14 +35,9 @@ def face(message_data, bot):
         img = faceSquares.drawTags(result['photos'][0]['tags'],imgurl)
         img.save('temp.png', 'PNG')
         postedUrl = imgur.postToImgur(str('temp.png'))
-    result = faceapi.Recognize(imgurl)
-    who = faceapi.getPeopleBlurb(result)
-    if who and characteristics:
-        return characteristics + who + ', what I saw %s' %postedUrl
-    elif characteristics:
         return characteristics + ', what I saw %s' %postedUrl
     else:
-        return "Couldn't find a face :("
+        return "Couldn't find a face, you are too ugly maybe :("
 
 commands = {"face": face, "passmeter": face}
 triggers = []

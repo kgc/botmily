@@ -1,7 +1,7 @@
 from PIL import Image , ImageDraw , ImageFilter
 import faceapi, urllib2
 from StringIO import StringIO
-
+import pprint
 #had to make this method because PIL wont let me draw a rectangle properly
 def drawRect(img,top_left,bottom_right, width , color):
 	draw = ImageDraw.Draw(img)
@@ -36,7 +36,6 @@ def drawRect(img,top_left,bottom_right, width , color):
 	draw.line(l4, fill=color, width=width)
 
 def getImageFromUrl(url):
-	print url
 	opener1 = urllib2.build_opener()  
 	page1 = opener1.open(url)  
 	data = StringIO(page1.read())
@@ -46,20 +45,22 @@ def getImageFromUrl(url):
 def drawTags(tags,imgurl):
 	image = getImageFromUrl(imgurl).convert('RGB').filter(ImageFilter.FIND_EDGES)
 	for tag in tags:
+		pprint.pprint(tag)
 		if tag.has_key('attributes'):
-			if tag['attributes'].has_key('gender'):
-				gender = tag['attributes']['gender']['value']
+			if tag['attributes'][0].has_key('gender'):
+				gender = tag['attributes'][0]['gender']
 				center = int(tag['center']['x']) , int(tag['center']['y'])
 				height = int(tag['height'])
 				width = int(tag['width'])
+				print gender,center,width,height,image
 				drawTag(gender,center,width,height,image)
 	return image
 
 def drawTag(gender,center,width,height,im):
-	c1 = (center[0] - (width/2)) * im.size[0]/100 , (center[1] - (height/2)) * im.size[1]/100
-	c3 = (center[0] + (width/2)) * im.size[0]/100 , (center[1] + (height/2)) * im.size[1]/100
-	c2 = (center[0] + (width/2)) * im.size[0]/100 , (center[1] - (height/2)) * im.size[1]/100
-	c4 = (center[0] - (width/2)) * im.size[0]/100 , (center[1] + (height/2)) * im.size[1]/100
+	c1 = (center[0] - (width/2)) , (center[1] - (height/2))
+	c3 = (center[0] + (width/2)) , (center[1] + (height/2))
+	c2 = (center[0] + (width/2)) , (center[1] - (height/2))
+	c4 = (center[0] - (width/2)) , (center[1] + (height/2))
 	if gender == 'female':
 		drawRect(im,c1,c3,width=4,color='blue')
 	elif gender == 'male':
