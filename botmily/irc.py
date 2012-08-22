@@ -104,7 +104,7 @@ class irc_handler(asynchat.async_chat):
     def raw_PRIVMSG(self, prefix, params):
         nick, user, host = split_prefix(prefix)
         channel = params[0]
-        message = params[-1].decode("utf-8")
+        message = params[-1].decode("utf-8", "replace")
         self.bot.privmsg(nick, user, host, channel, message)
 
     def raw_PING(self, prefix, params):
