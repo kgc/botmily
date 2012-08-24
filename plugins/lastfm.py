@@ -13,6 +13,8 @@ from botmily import config
 from botmily import irc
 
 def lastfm(message_data, bot):
+    if message_data["parsed"] == "":
+        return "Type in a username ¬_¬"
     result = urlopen('http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=' + quote_plus(message_data["parsed"]) + '&api_key=' + config.lastfm_api_key)
     root = ElementTree.fromstring(result.read())
     track = root.find('recenttracks/track')
