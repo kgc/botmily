@@ -45,7 +45,8 @@ def parse(message_data, bot):
     if entry.rating is not None:
         string += irc.bold(locale.format("%.2f", float(entry.rating.average))) + "/5.0 ("
         string += entry.rating.num_raters + ") - "
-    string += irc.bold(locale.format("%d", float(entry.statistics.view_count), True)) + " views - "
+    if entry.statistics is not None:
+        string += irc.bold(locale.format("%d", float(entry.statistics.view_count), True)) + " views - "
     string += irc.bold(unicode(entry.author[0].name.text, encoding='utf-8')) + " on "
     string += irc.bold(time.strftime("%Y.%m.%d", time.strptime(entry.published.text, "%Y-%m-%dT%H:%M:%S.000Z")))
     return string
