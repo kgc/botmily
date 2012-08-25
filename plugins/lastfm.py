@@ -18,7 +18,7 @@ def lastfm(message_data, bot):
     result = urlopen('http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=' + quote_plus(message_data["parsed"]) + '&api_key=' + config.lastfm_api_key)
     root = ElementTree.fromstring(result.read())
     track = root.find('recenttracks/track')
-    result_string = irc.bold(query) + '\'s last track - '
+    result_string = irc.bold(message_data["parsed"]) + '\'s last track - '
     result_string += irc.bold(track.find('name').text) + ' :: Artist - '
     result_string += irc.bold(track.find('artist').text) + ' :: Link to Song - '
     result_string += irc.bold(track.find('url').text)
