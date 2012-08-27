@@ -7,6 +7,7 @@ from ConfigParser import ConfigParser
 name = ''
 server = ''
 channels = []
+password = ''
 tumblr_blog = ''
 tumblr_user = ''
 tumblr_password = ''
@@ -19,6 +20,7 @@ def getConfig():
     global name
     global server
     global channels
+    global password
     global tumblr_blog
     global tumblr_user
     global tumblr_password
@@ -31,6 +33,7 @@ def getConfig():
     name = config.get('main', 'name')
     server = config.get('main', 'server')
     channels = config.get('main', 'channels').split(" ")
+    password = config.get('main', 'password')
     tumblr_tumbling = config.getboolean('tumblr','tumbling')
     tumblr_blog = config.get('tumblr', 'blog')
     tumblr_user = config.get('tumblr' , 'user')

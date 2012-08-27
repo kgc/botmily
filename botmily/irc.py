@@ -74,6 +74,7 @@ class irc_handler(asynchat.async_chat):
             params = params.split(" ")
         if command[0] >= b"0" and command[0] <= b"9":
             if command == b"001":
+                self.privmsg("nickserv", "identify " + self.bot.password)
                 for channel in self.bot.channels:
                     self.join(str(channel))
         else:

@@ -18,6 +18,7 @@ class bot():
         self.nickname = config.name
         self.realname = b"Botmily https://github.com/kgc/botmily"
         self.channels = config.channels
+        self.password = config.password
 
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.socket.connect((self.server, 6667))
