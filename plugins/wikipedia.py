@@ -26,10 +26,9 @@ def wiki(message_data, bot):
         title,description,url = extract(items[0])
         if 'may refer to' in description:
             title,description,url = extract(items[1])
-
-        print url   
+        if len(description) > 300:
+            description = description[:300] + '...'
         ret = '%s -- %s' %(description, urllib.quote(url, ':/'))
-        print ret
         return ret
     else:
         return 'No results'
