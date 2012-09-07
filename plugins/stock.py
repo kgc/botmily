@@ -20,7 +20,7 @@ def stock(message_data, bot):
     change = finance.find('change').get('data')
     perc_change = finance.find('perc_change').get('data')
     trade_timestamp = finance.find('trade_timestamp').get('data')
-    string = nick + ': '
+    string = message_data["nick"] + ': '
     string += company + ' - '
     string += last + ' '
     string += currency + ' '
