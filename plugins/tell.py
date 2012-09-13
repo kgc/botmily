@@ -21,7 +21,7 @@ def get_tell(message_data, bot):
     db.execute("create table if not exists tells(nick_to, nick_from, message, time, channel)")
     row = db.execute("select nick_to, nick_from, message, time, channel from tells where nick_to=:nick_to", {"nick_to": message_data["nick"].lower()}).fetchone()
     if row:
-        bot.irc.notice(message_data["nick"], row[1] + " said " + str(datetime.timedelta(seconds=(time.time() - row[3]))) + " ago in " + row[4] + " the following: " + row[2])
+        bot.irc.privmsg(message_data["nick"], row[1] + " said " + str(datetime.timedelta(seconds=(time.time() - row[3]))) + " ago in " + row[4] + " the following: " + row[2])
         db.execute("delete from tells where nick_to=:nick_to and nick_from=:nick_from and message=:message and time=:time and channel=:channel", {"nick_to": row[0], "nick_from": row[1], "message": row[2], "time": row[3], "channel": row[4]})
         db.commit()
 
