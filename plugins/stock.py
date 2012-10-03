@@ -20,17 +20,17 @@ def stock(message_data, bot):
     change = finance.find('change').get('data')
     perc_change = finance.find('perc_change').get('data')
     trade_timestamp = finance.find('trade_timestamp').get('data')
-    string = message_data["nick"] + ': '
-    string += company + ' - '
+    string = company + ' - '
     string += last + ' '
     string += currency + ' '
     change_string = change + ' (' + perc_change + ')'
-    if change[0] == '-':
-        string += irc.color(change_string, 'brown')
-    else:
-        string += irc.color(change_string, 'green')
-    string += ' as of '
-    string += trade_timestamp
+    if change:
+      if change[0] == '-':
+          string += irc.color(change_string, 'brown')
+      else:
+          string += irc.color(change_string, 'green')
+      string += ' as of '
+      string += trade_timestamp
     return string
 
 commands = {"stock": stock}
