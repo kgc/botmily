@@ -16,7 +16,7 @@ def steam(message_data, bot):
     soup = BeautifulStoneSoup(result, convertEntities=BeautifulStoneSoup.HTML_ENTITIES)
     data = soup.find('div', id='rightdetail')
     game_count = re.search('Found ([0-9]+)', data.text).group(1)
-    output = irc.bold(message[4:]) + ' owns ' + irc.bold(game_count) + ' Games with a value of ' + irc.bold(re.search('\$.*', data.text).group(0)) + '.'
+    output = irc.bold(message_data["parsed"]) + ' owns ' + irc.bold(game_count) + ' Games with a value of ' + irc.bold(re.search('\$.*', data.text).group(0)) + '.'
     if int(game_count) >= 125:
         output += ' <--- jesus fuck quit buying games you neckbeard.'
     return output
