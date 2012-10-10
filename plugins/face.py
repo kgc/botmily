@@ -31,6 +31,7 @@ def face(message_data, bot):
     result = faceapi.Detect(imgurl)
     result = faceapi.cleanTags(result)
     characteristics = faceapi.makeBlurb(result)
+    print result
     if characteristics:
         img = faceSquares.drawTags(result['photos'][0]['tags'],imgurl)
         img.save('temp.png', 'PNG')
