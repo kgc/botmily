@@ -74,9 +74,7 @@ class bot():
     def say(self, nick, channel, output):
         if output is None:
             return
-        if nick is None:
-            self.irc.privmsg(channel,output)
-        elif self.nickname == channel:
+        if self.nickname == channel:
             self.irc.privmsg(nick, output)
         else:
             self.irc.privmsg(channel, nick + ": " + output)
