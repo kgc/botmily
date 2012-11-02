@@ -22,7 +22,7 @@ def weather(message_data, bot):
         db.execute("insert or replace into weather(nick, loc) values (:nick, :loc)", {"nick": message_data["nick"], "loc": loc})
         db.commit()
     try:
-        result = urllib2.urlopen('http://api.wunderground.com/api/91ef6bb1dc828118/conditions/q/%s.xml') % loc
+        result = urllib2.urlopen('http://api.wunderground.com/api/91ef6bb1dc828118/conditions/q/' + loc + '.xml')
     except urllib2.URLError:
         return "Error getting weather data"
     try:
