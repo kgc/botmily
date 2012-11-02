@@ -22,27 +22,22 @@ def weather(message_data, bot):
         db.execute("insert or replace into weather(nick, loc) values (:nick, :loc)", {"nick": message_data["nick"], "loc": loc})
         db.commit()
     try:
-        result = urllib2.urlopen('http://www.google.com/ig/api?weather=' + loc)
+        result = urllib2.urlopen('http://api.wunderground.com/api/91ef6bb1dc828118/conditions/q/%s.xml') % loc
     except urllib2.URLError:
         return "Error getting weather data"
     try:
         root = ElementTree.fromstring(result.read())
     except ElementTree.ParseError:
         return "Error getting weather data"
-    weather = root.find('weather')
-    forecast_information = weather.find('forecast_information')
-    if forecast_information is None:
+    current_observation = weather.find('forecast_information')
+    if current_observation is None:
         return "Error getting weather data"
-    current_conditions = weather.find('current_conditions')
-    forecast_conditions = weather.find('forecast_conditions')
-    string = forecast_information.find('city').get('data') + ': '
-    string = string + current_conditions.find('condition').get('data') + ', '
-    string = string + current_conditions.find('temp_f').get('data') + 'F/'
-    string = string + current_conditions.find('temp_c').get('data') + 'C (H:'
-    string = string + forecast_conditions.find('high').get('data') + 'F, L:'
-    string = string + forecast_conditions.find('low').get('data') + 'F), '
-    string = string + current_conditions.find('humidity').get('data') + ', '
-    string = string + current_conditions.find('wind_condition').get('data') + '.'
+    display_location = weather.find('display_location')
+    string = display_location.find('full').get() + ': '
+    string = string + current_observation.find('weather').get() + ', '
+    string = string + current_observation.find('temperature_string').get() + ', '
+    string = string + current_observation.find('relative_humidity').get() + ', Wind is blowing '
+    string = string + current_observation.find('wind_string').get().replace('F','f', 1) + '.'
     return string
 
 commands = {"weather": weather}
