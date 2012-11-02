@@ -22,22 +22,22 @@ def weather(message_data, bot):
         db.execute("insert or replace into weather(nick, loc) values (:nick, :loc)", {"nick": message_data["nick"], "loc": loc})
         db.commit()
     try:
-        result = urllib2.urlopen('http://api.wunderground.com/api/91ef6bb1dc828118/conditions/q/%s.xml') % loc
+        result = urllib2.urlopen('http://api.wunderground.com/api/91ef6bb1dc828118/conditions/q/' + loc + '.xml')
     except urllib2.URLError:
         return "Error getting weather data"
     try:
-        root = ElementTree.fromstring(result.read())
+        weather = ElementTree.fromstring(result.read())
     except ElementTree.ParseError:
         return "Error getting weather data"
-    current_observation = weather.find('forecast_information')
+    current_observation = weather.find('current_observation')
     if current_observation is None:
         return "Error getting weather data"
-    display_location = weather.find('display_location')
-    string = display_location.find('full').get() + ': '
-    string = string + current_observation.find('weather').get() + ', '
-    string = string + current_observation.find('temperature_string').get() + ', '
-    string = string + current_observation.find('relative_humidity').get() + ', Wind is blowing '
-    string = string + current_observation.find('wind_string').get().replace('F','f', 1) + '.'
+    display_location = current_observation.find('display_location')
+    string = display_location.find('full').text + ': '
+    string = string + current_observation.find('weather').text + ', '
+    string = string + current_observation.find('temperature_string').text + ', '
+    string = string + current_observation.find('relative_humidity').text + ', Wind is blowing '
+    string = string + current_observation.find('wind_string').text.replace('F','f', 1) + '.'
     return string
 
 commands = {"weather": weather}
