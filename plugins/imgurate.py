@@ -5,7 +5,7 @@ from xml.etree import ElementTree
 def upload(message_data, bot):
 	""" Rehosts a link onto imgur. 50 uploads per hour max. """
 	r = urllib2.Request(url='http://api.imgur.com/2/upload.xml')
-	r.add_data(urllib.urlencode({'key' : 'c65c4bc475794794df87407bc1e89789','image' : message_data}))
+	r.add_data(urllib.urlencode({'key' : 'c65c4bc475794794df87407bc1e89789','image' : message_data["parsed"]}))
 	try:
 		response = urllib2.urlopen(r)
 	except urllib2.URLError:
