@@ -5,6 +5,7 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 import re
+from urllib import quote_plus
 import urllib2
 from xml.etree import ElementTree
 
@@ -22,7 +23,7 @@ def weather(message_data, bot):
         db.execute("insert or replace into weather(nick, loc) values (:nick, :loc)", {"nick": message_data["nick"], "loc": loc})
         db.commit()
     try:
-        result = urllib2.urlopen('http://api.wunderground.com/api/91ef6bb1dc828118/conditions/q/' + loc + '.xml')
+        result = urllib2.urlopen('http://api.wunderground.com/api/91ef6bb1dc828118/conditions/q/' + quote_plus(loc) + '.xml')
     except urllib2.URLError:
         return "Error getting weather data"
     try:
