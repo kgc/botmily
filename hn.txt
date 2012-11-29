@@ -1,0 +1,151 @@
+I had a related idea recently: Just hire a tall actress to carry around an iPad running Facetime. (Perhaps with a custom shoulder-strap?) It's going to be a bit longer before robots get up to the level of humans in terms of versatility, social awareness, and attractiveness. Until then, using a human would have certain advantages for a high-end solution.
+%
+With regards to advertising - clearly that has to do with your pain points regarding advertising. We've heard lots of feedback from people who say they don't mind the advertising on Facebook, or twitter. These people also might even watch commercial television.
+For those of us who stopped watching commercial television a decade ago (before "cutting the cable" was in vogue), who run ad-block religously, and are offended by "kmart specials" appearing in our twitter stream - we clearly have already reached our pain point, and are looking for something new.
+For those people - App.net will be a consistent, long term, ad free, communications infrastructure.
+There may only be 10,000 or so people there, and the other 5million (50 million? 500 million?) people may be on twitter. But, unlike Facebook, where it's important that all of your high-school friends, ex-girlfriends, aunts, nieces, classmates, and party-goer-chums are on the same site - I'm quite happy to leave them all behind and follow a small core of interesting technical people without distraction.
+%
+The best place to ask questions from the article like "What is the best way to hide an affair"--as if Quora could ever manage an honest discussion like that--is reddit.
+Of course, you couldn't ask the question just like that. It'd have to be more genuine, a post on /r/AskReddit like:
+"People who have had affairs: How did they happen?"
+Reddit has the kind of simultaneous anonymity and validity to look at things in [1] a very accurate way.
+[1]: http://www.alternet.org/inside-mind-serial-rapist
+%
+No one at an ordinary McDonald's would even notice such a device. Ergo this was not an ordinary McDonald's, but one with security people looking for cameras. Why would a McDonald's have security people looking for cameras? Possibly because it was a mafia front. If you wanted to launder money, a fast food restaurant in a popular location would be a good place to do it.
+The way the employees behaved is consistent with this explanation.
+%
+And so it seems that Facebook could be proven to be the new groupon.
+I would absolutely not be suprised if the hits were FB bots - however I'd expect they wouldn't be that directly stupid so as to have an Ad-bot net in house. Surely this is some service they outsource for plausible deniability.
+Something they would have learned from their relationship handing all user data over to the NSA/CIA.
+%
+Someone could host emacs in virtual machines that have a bunch of real emacsen hosted with TTYs implemented in Javascript and a virtual filesystem that actually writes to Dropbox. Someone could probably make good lifestyle-business money doing that.
+%
+Working at Big Corps is Uncool: Let's face it, being a programmer at a big bank or insurance company is perceived as boring. The over 40 set that these jobs appeal to aren't traditionally big adopters of new technology. As these people get promoted into decision making roles, they default to safe, known technologies.
+%
+"Social games" are the least social variety of game that has existed over the past 5,000 years. They're even less social than typical video games. With console games like Final Fantasy 6 there was, at least, the process of going to school and talking about the game with other kids. There was a social "meta" game. Magic had a similar metagame that was deeply social: you had to engage with other people to figure out what strategies people were coming up with and what the new deck types were. Zynga games don't have that because almost no adult would ever admit to wasting 5 hours per day on Farmville, because it's just too damn embarrassing.
+%
+It scalability is a joke. I've worked as a Java contractor at a number of places and what a PERL/PHP/Python solution can get done in 5 boxes, it takes Java 30-40 boxes. This is NOT an exagerration. I think it's a side effect of some developers stuffing everything into the session and expecting clustering to fix everything.
+%
+I think one could make an argument that Haskell is like Fascism. They're both extremely liberal applications of extremely conservative beliefs. This can make categorizing them difficult.
+Scheme, Erlang and company are more like communism: extremely liberal applications of extremely liberal beliefs. So much so that people tend to view them as "good in idea, but flawed in practice".
+Python and Ruby are more like traditional liberalism. They bring in new ideas, but not in excess.
+Scala and Clojure seem remarkably centrist. They both bring in good ideas from both the liberal and conservative camps.
+Lastly, C is "old guard" conservatism, C++ is a Bush-style "compassionate conservatism" that tries to please everyone while being labeled "conservative", Java is a neo-con, and C# might be compared to the Tea Party.
+%
+IPv6 does not mean the end of NAT, and WebRTC ROAP or JSEP already have ICE style STUN/TURN traversal mechanisms.
+(4 months ago I had a demo working using ROAP and STUN before they switched to JSEP. I'm literally in the middle of upgrading it to the new API.)
+%
+[+34] This is a disaster. A very sad day for the internet. We are entering into pastor Niemoller territory here: first they came for the file-sharing websites, next they came for the online gambling websites, and I would guess that Bitcoinis probably next in line, and following that, Magic: the Gathering online and the MMORPGs.
+%
+[+87] If women want to work in tech, nothing is stopping them. They can learn to program, and write code. This is something that you can teach yourself, you don't need to deal with or rely upon anyone else. It seems that the problem is, at least as described by the New York Times, that women don't want to log the hours, and they want to do something that's more social. That's fine, there is nothing wrong with that. But they may be better off doing something other than writing code if that's the case.
+%
+[+183] Iphones have made it normal to buy a computing device that has artificial restrictions preventing you from running whatever software you want on it. If they had their way then it would have actually been illegal to jailbreak your phone in order to circumvent this. Sure, iphones are really cool but this is a step in a terrifying direction. If it ever becomes illegal to upgrade the RAM in your laptop yourself or to install third party software on it then you can bet that you can trace the ancestry of those laws back to the shifts in public perception of computing freedom caused by companies like Apple.
+%
+[+14] Please. You act as though Google is doing something revolutionary. It isn't.
+Everyone from universities to BMW and Mercedes are working on self driving cars, Google Glasses aren't AR and better attempts have been made previously and as for cheap fibre well countless countries have in reality what Google is just talking about.
+%
+[+8] Why do we need more girl scientists and geeks? I'll never get that. Will having more women in roles traditionally held by men somehow make the world better? Will the woman scientist have a better chance at curing cancer? Will the woman construction worker lay better brick?
+I just don't get it. It seems like there's a subset of women who are into science and are smart and are going after or currently holding roles that are traditionally held by or usually dominated by men who for some reason want every other woman to be into the same things because somehow it's for the betterment of the world. If women and men really are equal (and I can't and won't say women are any less capable) then a woman doing "man work" shouldn't produce any different result.
+%
+[+17] I know it's not cool to help boys/males these days, but all the statistics point to a dramatic problem with young men of all races today. It's too bad that there isn't a powerful special interest group backed up by a bunch of humanities professors looking out for the impoverished non-black non-females of America.
+Charities should be based on need and helping the greater good, not on playing favorites.
+%
+[+15] The fucking president of the United States is black. Do you think attendees of startup weekend are more racist than your average American who voted for Obama?
+If a competent black adult pitched a startup, they would have had no more of a problem assembling a team than a white or asian.
+This sort of self-important racism by people fixated on the past is exactly what holds black culture back.
+%
+[+28] being a white male sometimes feels like the entire fucking universe is suffering from some sort of inferiority complex.
+%
+Every couple of weeks since I started using Android, I've checked the Play store to see if Emacs was there. So even though I don't know what I'll do with it yet, I'm excited to download the GNU Emacs app.
+Anybody have any ideas for what to do with Emacs on a phone?
+%
+Clojure basically obsoletes Ruby and Python unless you have concerns about the jvm startup time (which you can work around with Nailgun, but many people don't). No, seriously, Clojure is a uniform attack on everything of value in the Ruby, Python and Node.js world, only with fantastic performance and more flexible syntax.
+%
+Not specific to hacker culture, but I always felt there was a bit of a double standard when it comes to alpha male behavior. Women are attracted to aggressive men. Women like men who take charge. Women like men who are the initiators. Now obviously there is a like that crosses over into sexual harassment, but the fact is that men who behave aggressively are the ones who succeed in sexual pursuits most often. It's almost as if when the girl is attracted to the guy, it's flirting, but when she isn't, it's creepy/sexual harassment. I wish it weren't like this because I, personally, am not very aggressive.
+%
+CP will always exist. Especially if you group everybody under 18 into that category (a 17 year old is not a child, a six year old is) -- a 16 year old can't take nude pictures of herself without becoming one.
+That Freenet is currently filled with it is a good thing -- it indicates how much pressure society puts on the people who are into this stuff and that no other group, such as the KKK, gun rights activists, astronomers, has that much reason to fear going public with what they right.
+%
+I don't want to give up my life and income to raise children and I freely admit that I look down on those how do -- how can you possibly give up your future and salary for something as trivial, mundane and boring as a baby?
+%
+Yeah, she gets hit on. A lot. Mostly by drunk, smelly guys, and then proceeds to tell me how much it sucks. Her ass was grabbed several times at DEFCON events. My understand is that it's not an altogether pleasant experience for a non-totally-nerdy girl to spend any length of time at security conferences... and what with BSides and DEFCON, we were there a week.
+But here's the thing: girls are going to get hit on at a drunken Black Hat party at PURE just as much as they'd get hit on at a drunken normal night party at PURE. Yes, it's hackers, and you'd maybe expect better behavior (unless you've been to a lot of these things), but is the behavior worse than any other night club? I'm not a lady, but based on what I've heard, not really. Las Vegas is a dirty, "sinful" place, and any moderately attractive woman going out to a bar or club there is going to get hit on.
+%
+If a woman acts inappropriately towards a man, he rarely has any option to make her fuck off. "Men don't have to do it"? They can't. It's only that it happens less often (I guess). Seems to me that women have a lot more power in this regard.
+%
+The day some government decides bitcoins are becoming a real alternative or even a threat to government-controlled money, they will shut the whole gig down and all your bitcoins will be worth nothing.
+%
+As wrong as it sounds, maybe it's for the better to have a forum where pedophiles can aggregate knowledge on how to safely (physically speaking) molest children.
+%
+Thinkpads have an understated, timeless design, superior to almost all competition, Macs included. The only distinguishing quality of Macs is their built quality - but that's not exactly a good reason to buy an ugly laptop.
+Of course, most people have pretty childish tastes and prefer shiny things. But I guess de gustibus non est disputandum.
+%
+> I really hate this trend for describing anything somewhat
+> intellectual as 'autistic'.
+Yes, but psychologists love it -- it's bread on their table. Anyone sufficiently to the right of the mean I.Q. can be diagnosed on the autism spectrum, and be put into pointless therapy.
+%
+There is a simple way to solve this. Ship the phones without an OS. Then consumers would have the choice of installing Android, Windows, Symbian, or what have you. Ideally the OS would boot from a micro SD card, or at least installed from one.
+%
+Near the beginning he flashed a picture of an iPad as an example of a device that records everything you do and there is nothing you can do about it. I had never thought of that; instead I had viewed the iPad as a nice little device that probably would never be hacked, but in a sense it is already hacked as far as my privacy goes.
+%
+"AOSP Android"
+Warning massive derail... One thing the tech commentariat has slacked off on is better labels for different Android flavors. I'd suggest:
+AOSP = "Opendroid" (forkdroid?)
+stock Android (Opendroid + Google services/ecosystem) = "stockdroid"
+Android + Touchwiz/Sense = "Samdroid"/"Sensedroid"
+Opendroid + Amazon services/ecosystem = "Amazdroid"
+%
+I don't use a dishwasher either but for a different reason. I do dishes as a fitness hack. No, you don't expend a lot of energy doing dishes. But doing things by hand as much as feasible leads to a less lethargic lifestyle. Another hack is not using a microwave for anything. For instance, I make oatmeal in a pot the old fashioned way; stirring constantly so that nothing burns to the bottom of the pot. I don't use a dryer. After washing clothes (no I don't do this by hand!) I put clothes on a drying rack. I fold clothes right away after they dry.
+Overall these little hacks have made me less lazy and have given me a feeling of having more energy.
+%
+As much as it pains me to say this, but I think we have to invent some more advanced weapons before we start poking our heads out of our galaxy. Don't get me wrong, this is fantastic and I'm all tingly from excitement (this is the first time I've read about warp drives in the context of real science) ... but like I said, taking a stroll trough the galaxy with our bombs and finding a hostile alien world. Well we'd be screwed.
+Just food for though here; this is from the Halo universe, where the timeline goes something like this: humans invent "warp drives", they colonize other worlds, soon this colonies start to rebel which leads to a massive space civil war. Later the aliens arrive and set to destroy all of humanity. Now, if it waren't for the civil war, humans would have no experience in space combat, and they wouldn't have developed more advance weapons which would later allowed them to defeat the alien threat.
+%
+Since when did people need consent to post pictures they took, legally, of people in public, where these people have no expectation of privacy, then post them on the Internet with words to the effect of "I find this person physically attractive, I would like to have sexual relations with this person"?
+I can sexualize whatever I like, thank you very much.
+%
+Photos of women, predominantly of age, seen in public. Statistically, and by virtue of the photos being taken covertly, very few of the women featured would have known there was a photo of them floating around on the Internet.
+Very rarely is a name put to a photo, and reddit specifically prohibited the posting of personal details on the site.
+Even if the subjects did find out, so what? I'd be flattered if someone had taken a photo of me in public and posted it online saying they'd like to have sexual relations with me, that I have a nice ass, etc.
+%
+"seeding a pile of ebooks isn't really something for which any valid defense can usually be given"
+How come? If you seed a pile of ebooks (let's assume it's a very big pile that contains a good chunk of books humanity considers important) than you're helping our culture spread. It is in fact very important for books to be massively copied in order to survive future catastrophes: whatever they come in form of nuclear winter, totalitarian copyright regime or cultural degradation and neglect.
+I have my torrent of 20G of compressed ebooks and I feel very prepared for a digital nuclear winter.
+%
+Staples had one (1) Windows 8 tablet. It was a Samsung ATIV running Windows 8. [...] Beyond that, the specs just weren't up to snuff -- with 2GB RAM and 64GB storage, I'd just barely be able to run enough software to occasionally use it as a portable development machine.
+I'm basically looking for a Surface Pro (Intel Core processor, 4GB RAM, 128GB storage). It's amazing that despite knowing Microsoft would be building this, nobody else built something comparable, and stores aren't carrying even the few tablets/hybrids they did build.
+%
+The idea of owning a tablet by Google creeps me out to no end. I just can't picture myself using this without the lingering feeling of having Big Brother tracking me, watching me, keeping tabs on what sites I visit and what content I post online.
+%
+If you're a woman of average or better looks, you have one under-spoken superpower. Namely, how you interact with other men will have a huge effect on their social status. I'm not talking about overt flirtation (don't do it) or office relationships (avoid, avoid, avoid). I'm talking about more subtle stuff, like who a woman smiles at, who she initiates conversations with, and what her body language is toward various people. This will have huge ripple effects on the male status hierarchy.
+Much of the reason why men tend to seem "afraid of" women in the office is that they're afraid she'll judge him lowly and send out "loser signals" about him, bringing him down a notch or two. Since everything that happens at most workplaces (especially cliquish startups, so don't give me this "meritocratic" bullshit) is really about social status-- "performance" is a myth made up to justify firings and scare the mediocre-- this is huge.
+For example, a 23-year-old with 6 months on the job comes into the office of a powerful person (MD in banking, Partner in a law firm) and says that (s/)he is bored with the work that (s/)he is getting. If male, he's just another entitled fuck looking for an advantage. The response usually is: go away, pay your dues, and come back in 7 years after you've proven yourself (if I haven't fired you before that). That's because humans have a visceral hatred of low-status males, and in the workplace, men in the youngest 15% are almost always of low status (hence, they get the shittiest work).
+If the 23-year-old is female, this 45-year-old executive might realize that having a 23-year-old woman come into his office once a week might give him a younger, "cooler" image and prevent him from getting "managed out" (read: fired) for being "resistant to change" (read: old). So he might give her the kind of work that most people have to wait a few years to have a crack at.
+%
+The current bootloaders are not secure when unlocked and rooted -- there is no password protection -- so with a removable SD Card anyone can boot into your bootloader and put code on your phone, even if you have USB Debugging deactivated. Removing the SD Card is one step towards solving this.
+The next step to hardening the phone would be to provide a security check to access the bootloader. One of the reasons given as to why this hasn't happened is because the keyboard interface isn't loaded in the bootloader so you can't enter a password. However, you can navigate up and down via volume keys so you could have sequence-based passwords like Konami codes in video games.
+%
+Actually, yes, people do have to walk on eggshells around here. I am walking on eggshells right now for I can not express myself freely in a forum like this without suffering from social manipulation (downvoting, hellbanning). And this is while adhering to practices such as "no personal insults". In a place like this, you get banned for disagreeing, let alone speaking in an "unapproved" way. This place is hardly an example of civility.
+%
+Political Correctness is about hypersensitivity to possible insult to the point that using direct and clear communication is frowned upon in the public discourse.
+Political Correctness is an extraordinarily sad advance of style over substance that has attempted to address the language used to describe problems in our society over actually addressing the problems themselves.
+Ultimately, Political Correctness is yet another societal/political power grab in an attempt to control the very words that come out of everyones' mouths. Free speech is just too much individual power for many Utopians in society, but they've had so much trouble trying to legislate against the First Amendment[or other country's free speech protection]. Political Correctness is the next best thing for them, I guess.
+%
+I think more important than any issue is sending the message to politicians that if they do stupid things, they don't get to stay in office. Get rid of the moron who voted for SOPA, and vote in the moron who hates women. Then, two years later, vote him out. He won't have had a chance to do any damage yet, and we'll have sent the message to Minnesota politicians that neither of their positions were tolerable.
+%
+Debt isn't some random accident like getting hit by a car while crossing the street. You have to get yourself into debt. It used to be taboo, but it's acceptable to get into debt these days and worse yet, walk away from it. OWS, to me, represents an entitled generation.
+%
+This may sound harsh, but medical attention isn't free, and crossing that street without medical insurance and getting hit by a car and accepting expensive treatment you can't pay for is still incurring debt which you are obligated to pay back. This is why insurance of all forms exists; to protect us from expensive, catastrophic events. So as far as fault goes, you are very much to blame if you take risks and choose not to pay for insurance, regardless how expensive it is.
+%
+Right now I have 101 tabs running, and only 6 cores in my CPU. Do you know how much context switching costs in terms of performance? Do you know what the overhead would be if I were using Chrome?
+So spare me, please. When general purpose computing moves to GPUs then we'll revisit the idea of "one tab per process". Until then, out of "Chrome, many tabs, performance", pick any two, drop the other.
+%
+[Lawyer sues Microsoft for false advertising: the 32GB Surface only has 16GB of usable storage space]
+I just got some major deja-vu, since I don't think this is the first time someone's tried to troll a major corporation over "storage size claims" (and really, what kind of consumer would ever do his or her own research on a product worth hundreds of dollars before purchasing one? Oh wait, everyone with even the slightest bit of common sense...).
+Someone should inform this lawyer that he could just format the internal storage. Sure, you lose your entire tablet's operating system, but who needs that when you get MOAR GB's!
+%
+I remember thinking I was pretty successful when I got my first 6 figure bonus until I realized that my peers had been getting these kinds of bonuses for the past 8 years and the bonus was small potatoes compared to seeing your portfolio growing by 35 percent each year.
+%
+I never liked the idea of hosting my own files on someone else's server (Dropbox) or sending them through a middle-man.
+That's why i just run my own "cloud" on my own premises. If I want to give someone access to a file, I just throw it on my Synology DiskStation and the receiver can get at it via FTP or HTTP client.
+%
