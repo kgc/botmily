@@ -44,6 +44,8 @@ class bot():
                         "host":    host,
                         "channel": channel,
                         "message": message}
+        if message_data["nick"] == "tarageddon":
+            return
         command_match = re.match("\.([^ ]+) ?(.*)", message_data["message"])
         if command_match is not None:
             sent_command = command_match.group(1)
