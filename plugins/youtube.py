@@ -33,7 +33,7 @@ def search(message_data, bot):
     feed = yt_service.YouTubeQuery(query)
     title = feed.entry[0].title.text
     link = feed.entry[0].link[0].href
-    return "\u0002%s\u000f - %s" %(title , link)
+    return "\u0002%s\u000f - %s" %(unicode(title, encoding='utf-8') , link)
 
 def parse(message_data, bot):
     id = message_data["re"].group(1)
