@@ -39,7 +39,10 @@ def parse(message_data, bot):
     id = message_data["re"].group(1)
     youtube = service.YouTubeService()
     youtube.ssl = True
-    entry = youtube.GetYouTubeVideoEntry(video_id=id)
+    try:
+        entry = youtube.GetYouTubeVideoEntry(video_id=id)
+    except Service.RequestError:
+        return None
     string = irc.bold(unicode(entry.media.title.text, encoding='utf-8')) + " - length "
     string += irc.bold(convertHMS(entry.media.duration.seconds)) + " - rated "
     if entry.rating is not None:
