@@ -5,14 +5,17 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 import re
-from urllib2 import urlopen
+import urllib2
 
 from BeautifulSoup import BeautifulStoneSoup
 
 from botmily import irc
 
 def steam(message_data, bot):
-    result = urlopen('http://www.steamcalculator.com/id/' + message_data["parsed"])
+    try:
+        result = urllib2.urlopen('http://www.steamcalculator.com/id/' + message_data["parsed"])
+    except urllib2.URLError:
+        return "Nothing found sorry"
     soup = BeautifulStoneSoup(result, convertEntities=BeautifulStoneSoup.HTML_ENTITIES)
     data = soup.find('div', id='rightdetail')
     game_count = re.search('Found ([0-9]+)', data.text).group(1)
