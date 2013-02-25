@@ -9,7 +9,10 @@ def postToImgur(filename):
     c.setopt(c.URL, "http://api.imgur.com/2/upload.xml")
     c.setopt(c.HTTPPOST, values)
     c.setopt(c.WRITEFUNCTION,store.write)
-    c.perform()
+    try:
+        c.perform()
+    except pycurl.error:
+        return "Try again fucko"
     c.close()
     retval = store.getvalue()
     originalindex = retval.rfind('<original>')
