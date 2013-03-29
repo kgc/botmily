@@ -13,7 +13,10 @@ regex1 = r'\$([0-9]+\.?[0-9][0-9]?)'
 regex2 = r".*?(\d+\.?\d\d)[     ]*dolla"
 
 def get_btc_price():
-    response = urllib2.urlopen('https://mtgox.com/api/1/BTCUSD/ticker')
+    try:
+        response = urllib2.urlopen('https://mtgox.com/api/1/BTCUSD/ticker')
+    except urllib2.URLError:
+        return "MtGox is down :("
     tick = json.loads(response.read())['return']
     data = {}
     data['average'] = float(tick['avg']['value'])
