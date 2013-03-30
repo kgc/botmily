@@ -6,7 +6,7 @@ from twitter import Twitter
 import random
 #randomly return one of the last 50 tweets from https://twitter.com/TumblrTXT
 def tumblr(message_data, bot):
-    t = Twitter()
+    t = Twitter(api_version=1)
     tweetno = random.randint(0,49)
     tweet = t.statuses.user_timeline.tumblrtxt(count=50)[tweetno]
     return tweet['text']
