@@ -58,8 +58,14 @@ class bot():
 					possible_commands.append((command, function))
 			if len(possible_commands) == 1:
 				message_data["command"] = possible_commands[0][0]
-				output = possible_commands[0][1](message_data, self)
-				self.say(nick, channel, output)
+				try:
+					output = possible_commands[0][1](message_data, self)
+					self.say(nick, channel, output)
+				except Exception, E:
+					print('Encountered error while processing commmand %s with input %s' %(str(possible_commands[0][1]),str(message_data)))
+					print('Error reads : %s' %E.message)
+					self.say(nick,channel,'I crashed while trying to deal with something you said @_@')
+
 			if len(possible_commands) > 1:
 				commands_formatted = []
 				for command, function in possible_commands:
@@ -71,8 +77,14 @@ class bot():
 			if re.search(trigger, message_data["message"], re.I) is not None:
 				message_data["re"] = re.search(trigger,
 				                               message_data["message"], re.I)
-				output = function(message_data, self)
-				self.say(nick, channel, output)
+				try:
+					output = function(message_data, self)
+					self.say(nick, channel, output)
+				except Exception, E:
+					print('Encountered error while processing trigger %s with input %s' %(str(function),str(message_data)))
+					print('Error reads : %s' %E.message)
+					self.say(nick,channel,'I crashed while trying to deal with something you said @_@')
+				
 
 	def say(self, nick, channel, output):
 		if output is None:
