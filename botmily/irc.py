@@ -46,13 +46,15 @@ def split_prefix(prefix):
 	return nick, user, host
 
 class irc_handler(asynchat.async_chat):
-	def __init__(self, sock, bot):
+	def __init__(self, sock, bot , error_callback = None):
 		asynchat.async_chat.__init__(self, sock=sock)
 		self.ibuffer = b""
 		self.set_terminator(b"\r\n")
 		self.bot = bot
 		self.push(b"NICK %s\r\n" %bot.nickname)
 		self.push(b"USER botmily 0 0 :Botmily\r\n")
+		if error_callback:
+			self.handle_error = error_callback
 
 	def collect_incoming_data(self, data):
 		self.ibuffer += data
@@ -115,4 +117,3 @@ class irc_handler(asynchat.async_chat):
 		nick, user, host = split_prefix(prefix)
 		channel = params[0]
 		self.bot.join(nick, user, host, channel)
-
