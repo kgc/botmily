@@ -7,6 +7,7 @@ import pkgutil
 import re
 import socket
 import sys
+import traceback
 
 from botmily import config
 from botmily import irc
@@ -22,7 +23,7 @@ class bot():
 
 		self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		self.socket.connect((self.server, 6667))
-		self.irc = irc.irc_handler(self.socket, self)
+		self.irc = irc.irc_handler(self.socket, self , self.irc_error)
 
 		print("Initializing plugins...")
 		self.commands = {}
@@ -63,7 +64,7 @@ class bot():
 					self.say(nick, channel, output)
 				except Exception, E:
 					print('Encountered error while processing commmand %s with input %s' %(str(possible_commands[0][1]),str(message_data)))
-					print('Error reads : %s' %E.message)
+					traceback.print_exc()
 					self.say(nick,channel,'I crashed while trying to deal with something you said @_@')
 
 			if len(possible_commands) > 1:
@@ -82,7 +83,7 @@ class bot():
 					self.say(nick, channel, output)
 				except Exception, E:
 					print('Encountered error while processing trigger %s with input %s' %(str(function),str(message_data)))
-					print('Error reads : %s' %E.message)
+					traceback.print_exc()
 					self.say(nick,channel,'I crashed while trying to deal with something you said @_@')
 				
 
@@ -94,3 +95,6 @@ class bot():
 		else:
 			self.irc.privmsg(channel, nick + ": " + output)
 
+	def irc_error(self):
+		print('Nasty error caught, trying to continue anyway , details below :  ')
+		traceback.print_exc()
