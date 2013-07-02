@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from __future__ import division
 from __future__ import print_function
@@ -19,6 +19,18 @@ def fourchan(message_data, bot):
         board = "/a/"
     if message_data['command'] == "dick":
         board = "/d/"
+    if message_data['command'] == "technology":
+        board = "/g/"
+    if message_data['command'] == "videogame":
+        board = "/v/"
+    if message_data['command'] == "animals":
+        board = "/an/"
+    if message_data['command'] == "hentai":
+        board = "/h/"
+    if message_data['command'] == "ecchi":
+        board = "/e/"
+    if message_data['command'] == "pokemon":
+        board = "/vp/"
 
     result = urlopen('http://boards.4chan.org' + board)
     soup = BeautifulStoneSoup(result, convertEntities=BeautifulStoneSoup.HTML_ENTITIES)
@@ -29,6 +41,6 @@ def fourchan(message_data, bot):
         url = imgur.postToImgur(str("temp.jpg"))
     return url
 
-commands = {"anime": fourchan, "dick": fourchan}
+commands = {"technology": fourchan, "animals": fourchan, "pokemon": fourchan, "ecchi": fourchan, "videogame": fourchan, "hentai": fourchan, "anime": fourchan, "dick": fourchan}
 triggers = []
 
