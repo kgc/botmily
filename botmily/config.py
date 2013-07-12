@@ -28,6 +28,10 @@ def getConfig():
     global tumblr_tumbling
     global wolframalpha_api_key
     global lastfm_api_key
+    global oauth_token
+    global oauth_secret
+    global consumer_key
+    global consumer_secret
     config = ConfigParser()
     config.read('config.ini')
     name = config.get('main', 'name')
@@ -41,6 +45,10 @@ def getConfig():
     tumblr_title = config.get('tumblr','post_titles')
     wolframalpha_api_key = config.get('wolframalpha', 'api_key')
     lastfm_api_key = config.get('lastfm', 'api_key')
+    oauth_token = config.get('twitter', 'oauth_token')
+    oauth_secret = config.get('twitter', 'oauth_secret')
+    consumer_key = config.get('twitter', 'consumer_key')
+    consumer_secret = config.get('twitter', 'consumer_secret')
     print("I will use the name: " + name)
     print("I will connect to the server: " + server)
     print("I will connect to the channels: " + ", ".join(channels))
